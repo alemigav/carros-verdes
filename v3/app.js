@@ -148,12 +148,12 @@ function placeholderSvg(carroceria) {
     : 'M 94 89 Q 108 58 140 56 L 186 56 Q 212 60 222 89 Z';
   const wheelY = tall ? 130 : 132;
   return `<svg viewBox="0 0 320 180" role="img" aria-label="Ilustração de um ${label}" preserveAspectRatio="xMidYMid slice">
-    <rect width="320" height="180" fill="#efeee6"/>
-    <line x1="20" y1="${wheelY + 18}" x2="300" y2="${wheelY + 18}" stroke="#dcd8ca" stroke-width="4"/>
-    <path d="${cabin}" fill="#dcefe8" stroke="#0d6b57" stroke-width="4" stroke-linejoin="round"/>
-    <rect x="34" y="${bodyY}" width="252" height="${bodyH}" rx="16" fill="#dcefe8" stroke="#0d6b57" stroke-width="4"/>
-    <circle cx="96" cy="${wheelY}" r="20" fill="#3a382f"/><circle cx="96" cy="${wheelY}" r="9" fill="#efeee6"/>
-    <circle cx="224" cy="${wheelY}" r="20" fill="#3a382f"/><circle cx="224" cy="${wheelY}" r="9" fill="#efeee6"/>
+    <rect width="320" height="180" fill="#eaf1ff"/>
+    <line x1="20" y1="${wheelY + 18}" x2="300" y2="${wheelY + 18}" stroke="rgba(18,32,63,.18)" stroke-width="4"/>
+    <path d="${cabin}" fill="#dcf7ea" stroke="#04a06f" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="34" y="${bodyY}" width="252" height="${bodyH}" rx="16" fill="#dcf7ea" stroke="#04a06f" stroke-width="4"/>
+    <circle cx="96" cy="${wheelY}" r="20" fill="#2f3c55"/><circle cx="96" cy="${wheelY}" r="9" fill="#ffffff"/>
+    <circle cx="224" cy="${wheelY}" r="20" fill="#2f3c55"/><circle cx="224" cy="${wheelY}" r="9" fill="#ffffff"/>
   </svg>`;
 }
 

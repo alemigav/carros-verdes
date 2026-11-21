@@ -92,7 +92,12 @@ sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre trad
 ## Identidade visual
 
 Marca "Carros Verdes": símbolo circular com folha e raio (o elétrico dentro do verde),
-wordmark de peso forte com "Verdes" em verde institucional (`#0d6b57`).
+wordmark de peso forte com "Verdes" em verde vivo (`#00a36c`).
+
+Tema visual **"liquid glass" claro**, definido em `theme.css` e compartilhado pelas três
+páginas: fundo em gradiente de azul, violeta e verde, painéis translúcidos com desfoque,
+borda de luz e sombra suave; azul elétrico (`#0b6bff`) nas ações e verde (`#00a36c`) na
+marca e nos indicadores de economia.
 
 | Arquivo | Uso |
 | --- | --- |
@@ -116,7 +121,8 @@ python3 -m http.server 8000 --bind 127.0.0.1
 
 ```
 index.html            marca, hero, filtros, quatro visões, rodapé legal
-styles.css            tokens, layout, componentes e responsivo
+theme.css             tema compartilhado (cores, vidro, fundo) das três páginas
+styles.css            layout, componentes e responsivo da V2
 app.js                estado, motor de notas, filtros, fichas, comparação, CSV
 views.js              renderizadores (cartões, tabela, gráficos, custos)
 data/cars.json        base compilada (90 versões)

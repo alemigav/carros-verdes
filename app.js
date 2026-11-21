@@ -848,7 +848,7 @@ function openDetail(id) {
           </section>`,
         )
         .join('')}
-      ${car.alerta_versao ? `<div class="notes" style="background:#f8ecdf"><b>Atenção à versão</b>${car.alerta_versao}</div>` : ''}
+      ${car.alerta_versao ? `<div class="notes" style="background:var(--warn-soft)"><b>Atenção à versão</b>${car.alerta_versao}</div>` : ''}
       ${car.observacoes ? `<div class="notes"><b>O que saber</b>${car.observacoes}</div>` : ''}
       ${sourceList.length
         ? `<div class="sources"><h4>Fontes</h4>${sourceList
@@ -883,7 +883,7 @@ function ringSvg(value, size = 54) {
   const r = (size - stroke) / 2 - 1;
   const c = 2 * Math.PI * r;
   const pct = Math.max(0, Math.min(100, value)) / 100;
-  const hue = value >= 60 ? 'var(--accent)' : value >= 50 ? '#c58b16' : '#b45a3c';
+  const hue = value >= 60 ? 'var(--accent)' : value >= 50 ? '#d8640a' : '#d8342f';
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
     <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
     <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${hue}" stroke-width="${stroke}"

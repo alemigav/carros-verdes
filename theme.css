@@ -1,0 +1,63 @@
+/* Carros Verdes — tema "liquid glass" claro: azul elétrico, verde vivo e vidro translúcido. */
+
+:root {
+  /* tinta e superfícies */
+  --ink: #0b1220;
+  --ink-2: #2f3c55;
+  --muted: #5b6b85;
+
+  --surface: #ffffff;
+  --surface-2: rgba(255, 255, 255, .55);
+  --line: rgba(18, 32, 63, .12);
+  --line-strong: rgba(18, 32, 63, .22);
+
+  /* cores */
+  --accent: #0b6bff;
+  --accent-dark: #0a52c8;
+  --accent-soft: rgba(11, 107, 255, .12);
+  --brand: #00a36c;
+  --brand-dark: #067a53;
+  --brand-soft: rgba(0, 163, 108, .14);
+  --violet: #7c4dff;
+  --warn: #d8640a;
+  --warn-soft: rgba(255, 138, 0, .14);
+  --danger: #d8342f;
+  --best: #00a36c;
+
+  /* vidro */
+  --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, .74), rgba(255, 255, 255, .42));
+  --glass-bg-strong: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .72));
+  --glass-border: rgba(255, 255, 255, .9);
+  --glass-blur: blur(24px) saturate(1.7);
+  --glass-shadow: 0 24px 48px -34px rgba(13, 30, 63, .55), 0 2px 10px -6px rgba(13, 30, 63, .22);
+  --glass-inset: inset 0 1px 0 rgba(255, 255, 255, .95);
+  --shadow: 0 24px 48px -34px rgba(13, 30, 63, .55), 0 2px 10px -6px rgba(13, 30, 63, .22);
+
+  --radius: 20px;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", sans-serif;
+}
+
+html { background: #e6eeff; }
+
+body {
+  background:
+    radial-gradient(900px 520px at 2% -10%, rgba(124, 77, 255, .34), transparent 62%),
+    radial-gradient(860px 500px at 100% 0%, rgba(11, 107, 255, .30), transparent 64%),
+    radial-gradient(760px 460px at 84% 30%, rgba(0, 163, 108, .16), transparent 66%),
+    radial-gradient(1100px 700px at 46% 114%, rgba(0, 163, 108, .24), transparent 64%),
+    linear-gradient(158deg, #e7eeff 0%, #f2eaff 48%, #e4f8ef 100%);
+  background-attachment: fixed;
+  color: var(--ink);
+}
+
+::selection { background: rgba(11, 107, 255, .18); color: var(--ink); }
+
+/* peças de vidro reutilizáveis */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inset);
+}

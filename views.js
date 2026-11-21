@@ -255,14 +255,14 @@ function renderTable(input) {
 /* ---------- gráficos ---------- */
 
 const BODY_COLORS = {
-  hatch: '#0d6b57',
-  sedan: '#2f6f9f',
-  suv: '#a9550c',
-  picape: '#6b4a8c',
-  minivan: '#8a6b1f',
-  cupe: '#a83d5c',
-  perua: '#4a6d2f',
-  outro: '#787569',
+  hatch: '#0b6bff',
+  sedan: '#7c4dff',
+  suv: '#00a36c',
+  picape: '#d8640a',
+  minivan: '#b03ba8',
+  cupe: '#d8342f',
+  perua: '#0aa3b8',
+  outro: '#5b6b85',
 };
 
 function niceTicks(min, max, count = 5) {
@@ -349,7 +349,7 @@ function renderCharts(input) {
       const selected = state.selected.includes(car.id);
       return `<circle class="dot" cx="${px(car.preco_brl)}" cy="${py(car.autonomia_referencia_km)}"
         r="${selected ? 9 : 6.5}" fill="${color}" fill-opacity="${car.motorizacao === 'BEV' ? 0.82 : 0.6}"
-        stroke="${selected ? '#17160f' : '#fffefb'}" stroke-width="${selected ? 2 : 1.2}"
+        stroke="${selected ? '#0b1220' : '#ffffff'}" stroke-width="${selected ? 2 : 1.2}"
         data-id="${car.id}">
         <title>${car.marca} ${car.modelo} ${car.versao || ''}
 ${money(car.preco_brl)} · ${n0(car.autonomia_referencia_km)} km · nota ${Math.round(score(car))}</title>
@@ -367,11 +367,11 @@ ${money(car.preco_brl)} · ${n0(car.autonomia_referencia_km)} km · nota ${Math.
       <line class="axis" x1="${M.left}" y1="${H - M.bottom}" x2="${W - M.right}" y2="${H - M.bottom}"/>
       <line class="axis" x1="${M.left}" y1="${M.top}" x2="${M.left}" y2="${H - M.bottom}"/>
       <line class="grid-line" x1="${px(medX)}" y1="${M.top}" x2="${px(medX)}" y2="${H - M.bottom}"
-        stroke-dasharray="3 4" stroke="#c6c1b1"/>
+        stroke-dasharray="3 4" stroke="rgba(18,32,63,.22)"/>
       <line class="grid-line" x1="${M.left}" y1="${py(medY)}" x2="${W - M.right}" y2="${py(medY)}"
-        stroke-dasharray="3 4" stroke="#c6c1b1"/>
-      <text x="${M.left + 8}" y="${M.top + 12}" style="font-size:10px;fill:#10724f">barato + muita autonomia — a esquina do valor</text>
-      <text x="${W - M.right - 4}" y="${H - M.bottom - 10}" text-anchor="end" style="font-size:10px;fill:#a9550c">caro + pouca autonomia — mais difícil de justificar</text>
+        stroke-dasharray="3 4" stroke="rgba(18,32,63,.22)"/>
+      <text x="${M.left + 8}" y="${M.top + 12}" style="font-size:10px;fill:#067a53">barato + muita autonomia — a esquina do valor</text>
+      <text x="${W - M.right - 4}" y="${H - M.bottom - 10}" text-anchor="end" style="font-size:10px;fill:#d8640a">caro + pouca autonomia — mais difícil de justificar</text>
       ${dots}
       ${labelNodes}
       <text x="${(W + M.left) / 2}" y="${H - 10}" text-anchor="middle" style="font-size:11px">Preço (R$)</text>
