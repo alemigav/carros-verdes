@@ -1,0 +1,96 @@
+Carros Verdes — LICENSE
+=======================
+
+Copyright © 2026 Alexandre Michel Gavronski.
+Todos os direitos reservados. All rights reserved.
+
+Este é um aplicativo proprietário. Ele NÃO é software livre e NÃO é distribuído
+sob nenhuma licença de código aberto.
+
+This is proprietary software. It is NOT free software and is NOT distributed
+under any open-source license.
+
+
+1. Reserva de direitos
+----------------------
+
+A publicação deste repositório em local público (por exemplo, GitHub) tem a
+finalidade de hospedar o site e de permitir sua leitura. Ela não concede
+licença, nem transfere direitos, nem torna o aplicativo aberto. A ausência de
+um arquivo de licença permissiva é intencional.
+
+O titular detém, com exclusividade, todos os direitos de autor e conexos sobre
+o aplicativo, incluindo, sem limitação: o código-fonte, os scripts de coleta e
+de montagem dos dados, a base compilada, os textos da interface, a marca
+"Carros Verdes", o logotipo (folha + raio), o selo, a identidade visual, os
+arquivos de estilo e os arquivos de imagem.
+
+2. O que não é permitido sem autorização escrita
+------------------------------------------------
+
+Sem autorização prévia e por escrito do titular, é vedado:
+
+  a) copiar, baixar, clonar, "forkar" ou de outra forma reproduzir o código, a
+     identidade visual ou os textos, no todo ou em parte;
+  b) modificar, adaptar, traduzir, desmembrar, decompilar ou criar obras
+     derivadas;
+  c) distribuir, publicar, sublicenciar, vender, alugar, doar ou disponibilizar
+     o aplicativo ou qualquer parte dele a terceiros;
+  d) hospedar, espelhar, embutir ou oferecer o aplicativo como serviço, total ou
+     parcial, inclusive em servidores próprios ou de terceiros;
+  e) remover, ocultar ou alterar avisos de autoria, de copyright ou de marca;
+  f) usar a marca, o logotipo ou a identidade visual "Carros Verdes" em
+     produtos, serviços, campanhas ou materiais de terceiros.
+
+3. Usar o site publicado
+------------------------
+
+A visita e o uso do site publicado para consulta pessoal e comparação de
+veículos são permitidos, incluindo exportar o CSV da própria sessão para uso
+próprio. Isso não estende qualquer direito sobre o código, a base compilada,
+os textos ou a marca.
+
+4. Dados e marcas de terceiros
+------------------------------
+
+4.1. O conjunto de dados aberto da Recarregados
+(https://recarregados.com/dados/carros-eletricos-hibridos-ficha), licenciado em
+Creative Commons Atribuição 4.0 (CC BY 4.0), permanece sob essa licença e sob a
+titularidade de seus autores. A reserva de direitos deste arquivo não incide
+sobre aquele conjunto de dados original.
+
+4.2. Esta reserva alcança a compilação, o cruzamento, a curadoria e a
+apresentação dos dados feitos neste projeto, e os arquivos derivados que os
+materializam.
+
+4.3. As páginas dos fabricantes citadas como fonte, bem como as marcas, os nomes
+comerciais e os modelos de veículos, pertencem a seus respectivos titulares e
+aqui aparecem apenas para identificação e atribuição.
+
+5. Ausência de garantia
+-----------------------
+
+O aplicativo é fornecido "no estado em que se encontra". O titular não oferece
+garantia de qualquer natureza, expressa ou implícita, incluindo adequação a um
+propósito específico, exatidão dos dados de terceiros ou ausência de erros. Em
+nenhuma hipótese o titular responde por perdas ou danos decorrentes do uso ou da
+impossibilidade de uso do aplicativo.
+
+6. Autorizações
+---------------
+
+Pedidos de autorização, licenciamento ou parceria devem ser dirigidos ao titular
+pelo perfil https://github.com/alemigav.
+
+---
+
+English summary (for reference only; the Portuguese text above governs):
+Copyright © 2026 Alexandre Michel Gavronski. All rights reserved. This is
+proprietary software, not open source. Public hosting of this repository exists
+to serve the website and does not grant any license. Copying, modifying,
+distributing, sublicensing, mirroring or creating derivative works requires
+prior written permission from the copyright holder. The Recarregados open
+dataset (CC BY 4.0) remains under its own license and is excluded from this
+reservation; the compilation and presentation of data in this project are
+reserved. Third-party trademarks belong to their respective owners. Provided
+"as is", without warranty of any kind.

@@ -1,102 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carros Verdes — every electric and plug-in hybrid in Brazil, one decision</title>
+<title>Carros Verdes — comparador de carros elétricos e híbridos plug-in do Brasil</title>
+<meta name="description" content="Compare preço, autonomia Inmetro, recarga, equipamentos e custo por quilômetro das versões de carros elétricos e híbridos plug-in à venda no Brasil. Cada número com a fonte ao lado.">
+<meta name="author" content="Alexandre Michel Gavronski">
+<meta name="copyright" content="© 2026 Alexandre Michel Gavronski. Todos os direitos reservados.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d6b57">
+<link rel="canonical" href="https://alemigav.github.io/carros-verdes/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carros Verdes">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Carros Verdes — o comparador de elétricos e híbridos plug-in do Brasil">
+<meta property="og:description" content="90 versões com preço de tabela, autonomia, recarga, equipamentos e custo real por quilômetro — com a fonte de cada número.">
+<meta property="og:url" content="https://alemigav.github.io/carros-verdes/">
+<meta property="og:image" content="https://alemigav.github.io/carros-verdes/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Carros Verdes — comparador de carros elétricos e híbridos plug-in do Brasil">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carros Verdes — comparador de elétricos e híbridos plug-in do Brasil">
+<meta name="twitter:description" content="90 versões com preço, autonomia, recarga e custo por quilômetro — com a fonte de cada número.">
+<meta name="twitter:image" content="https://alemigav.github.io/carros-verdes/assets/og-image.png">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar__lead">
-    <div class="mark">CV<span>·</span>BR</div>
-    <div class="topbar__title">
-      <h1>Carros Verdes</h1>
-      <p id="topbar-meta">Prices 20 Nov 2026 · loading…</p>
+<a class="skip-link" href="#result-count">Pular para os resultados</a>
+
+<header class="masthead">
+  <div class="masthead__bar">
+    <a class="brand" href="./" aria-label="Carros Verdes — início">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="46" height="46" focusable="false">
+          <defs>
+            <linearGradient id="brand-g" x1="0.15" y1="0" x2="0.85" y2="1">
+              <stop offset="0" stop-color="#149073"/>
+              <stop offset="1" stop-color="#0a4d3f"/>
+            </linearGradient>
+          </defs>
+          <circle cx="24" cy="24" r="23" fill="url(#brand-g)"/>
+          <path d="M25.2 5.6C35.4 13.4 35.9 27.2 23.1 42.4 11.6 27.4 12.6 13.6 25.2 5.6Z" fill="#f7f6f0"/>
+          <path d="M24.9 13.4 15.4 24.7H23.9L22.9 32.4 32.6 21.1H24L24.9 13.4Z" fill="#0d6b57"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Carros <em>Verdes</em></span>
+        <span class="brand__tag">Elétricos e híbridos plug-in no Brasil</span>
+      </span>
+    </a>
+
+    <div class="masthead__controls">
+      <div class="switch" id="dataset-switch" role="tablist" aria-label="Tipo de motorização">
+        <button role="tab" data-mode="BEV" class="is-active" aria-selected="true">100% elétricos <span id="count-bev"></span></button>
+        <button role="tab" data-mode="PHEV" aria-selected="false">Híbridos plug-in <span id="count-phev"></span></button>
+      </div>
+      <button class="ghost-btn" id="btn-sidebar" aria-expanded="false" aria-controls="sidebar">Filtros</button>
     </div>
   </div>
 
-  <div class="topbar__controls">
-    <div class="switch" id="dataset-switch" role="tablist" aria-label="Powertrain">
-      <button role="tab" data-mode="BEV" class="is-active" aria-selected="true">100% electric <span id="count-bev"></span></button>
-      <button role="tab" data-mode="PHEV" aria-selected="false">Plug-in flex <span id="count-phev"></span></button>
-    </div>
-    <button class="ghost-btn" id="btn-sidebar" aria-expanded="false">Filters</button>
+  <div class="masthead__meta">
+    <p id="topbar-meta">Preços de 20/11/2026 · carregando…</p>
+    <p class="masthead__credit">por Alexandre Michel Gavronski</p>
   </div>
 </header>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__copy">
+    <h2 id="hero-title">Escolha com números, não com achismo.</h2>
+    <p>Preço de tabela, autonomia Inmetro, recarga, equipamentos e custo real por quilômetro das versões à venda no Brasil — cada dado com a fonte ao lado.</p>
+  </div>
+  <dl class="hero__stats">
+    <div><dt>Elétricos</dt><dd id="hero-bev">—</dd></div>
+    <div><dt>Plug-in</dt><dd id="hero-phev">—</dd></div>
+    <div><dt>Versões</dt><dd id="hero-total">—</dd></div>
+    <div><dt>Preços de</dt><dd id="hero-range">—</dd></div>
+  </dl>
+</section>
 
 <div class="shell">
 
   <aside class="sidebar" id="sidebar">
     <section class="panel">
       <div class="panel__head">
-        <h2>What matters to you</h2>
-        <button class="link-btn" id="reset-weights">Reset</button>
+        <h2>O que importa para você</h2>
+        <button class="link-btn" id="reset-weights">Redefinir</button>
       </div>
-      <p class="hint">Drag to weight each criterion. The score re-ranks every car in the list.</p>
+      <p class="hint">Arraste para dar peso a cada critério. A nota recalcula e reordena todos os carros da lista.</p>
       <div class="presets" id="presets">
-        <button data-preset="balanced">Balanced</button>
-        <button data-preset="city">City &amp; budget</button>
-        <button data-preset="road">Road trips</button>
-        <button data-preset="family">Family</button>
-        <button data-preset="loaded">Loaded</button>
-        <button data-preset="fun">Performance</button>
+        <button data-preset="balanced">Equilibrado</button>
+        <button data-preset="city">Cidade e economia</button>
+        <button data-preset="road">Viagens longas</button>
+        <button data-preset="family">Família</button>
+        <button data-preset="loaded">Bem equipado</button>
+        <button data-preset="fun">Desempenho</button>
       </div>
       <div class="weights" id="weights"></div>
     </section>
 
     <section class="panel">
       <div class="panel__head">
-        <h2>Narrow it down</h2>
-        <button class="link-btn" id="reset-filters">Clear</button>
+        <h2>Refine a busca</h2>
+        <button class="link-btn" id="reset-filters">Limpar</button>
       </div>
 
       <label class="field">
-        <span>Search</span>
-        <input type="search" id="f-search" placeholder="Model, brand or version">
+        <span>Buscar</span>
+        <input type="search" id="f-search" placeholder="Modelo, marca ou versão">
       </label>
 
       <div class="field">
-        <span>Price <b id="price-readout"></b></span>
+        <span>Preço <b id="price-readout"></b></span>
         <div class="dual-range">
-          <input type="range" id="f-price-min">
-          <input type="range" id="f-price-max">
+          <input type="range" id="f-price-min" aria-label="Preço mínimo">
+          <input type="range" id="f-price-max" aria-label="Preço máximo">
         </div>
       </div>
 
       <div class="field">
-        <span>Range ≥ <b id="range-readout"></b></span>
-        <input type="range" id="f-range" min="0" max="700" step="50" value="0">
+        <span>Autonomia ≥ <b id="range-readout"></b></span>
+        <input type="range" id="f-range" min="0" max="700" step="50" value="0" aria-label="Autonomia mínima em quilômetros">
       </div>
 
       <div class="field">
-        <span>Battery ≥ <b id="battery-readout"></b></span>
-        <input type="range" id="f-battery" min="0" max="120" step="5" value="0">
+        <span>Bateria ≥ <b id="battery-readout"></b></span>
+        <input type="range" id="f-battery" min="0" max="120" step="5" value="0" aria-label="Bateria mínima em quilowatts-hora">
       </div>
 
       <div class="field">
-        <span>DC charging ≥ <b id="dc-readout"></b></span>
-        <input type="range" id="f-dc" min="0" max="350" step="25" value="0">
+        <span>Recarga DC ≥ <b id="dc-readout"></b></span>
+        <input type="range" id="f-dc" min="0" max="350" step="25" value="0" aria-label="Recarga DC mínima em quilowatts">
       </div>
 
       <div class="field">
-        <span>Body</span>
+        <span>Carroceria</span>
         <div class="chips" id="f-body"></div>
       </div>
 
       <div class="field">
-        <span>Brand</span>
+        <span>Marca</span>
         <div class="chips chips--scroll" id="f-brand"></div>
       </div>
 
       <div class="field">
-        <span>Must have</span>
+        <span>Itens obrigatórios</span>
         <div class="chips" id="f-must"></div>
       </div>
 
       <div class="field">
-        <span>Drivetrain</span>
+        <span>Tração</span>
         <div class="chips" id="f-traction"></div>
       </div>
     </section>
@@ -110,26 +168,26 @@
       </div>
       <div class="toolbar__right">
         <label class="inline-field">
-          <span>Sort</span>
+          <span>Ordenar</span>
           <select id="sort">
-            <option value="score">Your score</option>
-            <option value="price">Price ↑</option>
-            <option value="price-desc">Price ↓</option>
-            <option value="range">Range ↓</option>
-            <option value="efficiency">Efficiency ↓</option>
-            <option value="charging">Fast charging ↓</option>
-            <option value="power">Power ↓</option>
-            <option value="space">Space ↓</option>
-            <option value="value">Value vs peers ↓</option>
-            <option value="nota">Editorial rating ↓</option>
+            <option value="score">Sua nota</option>
+            <option value="price">Preço ↑</option>
+            <option value="price-desc">Preço ↓</option>
+            <option value="range">Autonomia ↓</option>
+            <option value="efficiency">Eficiência ↓</option>
+            <option value="charging">Recarga rápida ↓</option>
+            <option value="power">Potência ↓</option>
+            <option value="space">Espaço ↓</option>
+            <option value="value">Custo-benefício ↓</option>
+            <option value="nota">Nota editorial ↓</option>
           </select>
         </label>
-        <button class="ghost-btn" id="btn-export" title="Download the cars currently shown as a spreadsheet">Export CSV</button>
-        <div class="switch switch--small" id="view-switch">
-          <button data-view="cards" class="is-active">Cards</button>
-          <button data-view="table">Table</button>
-          <button data-view="charts">Charts</button>
-          <button data-view="cost">Cost</button>
+        <button class="ghost-btn" id="btn-export" title="Baixar os carros exibidos como planilha">Exportar CSV</button>
+        <div class="switch switch--small" id="view-switch" role="tablist" aria-label="Visão">
+          <button data-view="cards" class="is-active" role="tab" aria-selected="true">Cartões</button>
+          <button data-view="table" role="tab" aria-selected="false">Tabela</button>
+          <button data-view="charts" role="tab" aria-selected="false">Gráficos</button>
+          <button data-view="cost" role="tab" aria-selected="false">Custos</button>
         </div>
       </div>
     </div>
@@ -144,18 +202,31 @@
 <div class="dock" id="dock" hidden>
   <div class="dock__tray" id="dock-tray"></div>
   <div class="dock__actions">
-    <button class="ghost-btn" id="dock-clear">Clear</button>
-    <button class="primary-btn" id="dock-compare">Compare <span id="dock-count">0</span></button>
+    <button class="ghost-btn" id="dock-clear">Limpar</button>
+    <button class="primary-btn" id="dock-compare">Comparar <span id="dock-count">0</span></button>
   </div>
 </div>
 
 <div class="overlay" id="overlay" hidden>
   <div class="overlay__scrim" data-close></div>
-  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Details"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Detalhes do carro"></div>
 </div>
 
 <footer class="foot">
-  <p>Prices: your spreadsheet of 20 Nov 2026 (table prices and campaigns). Range, power, charging and ratings where flagged come from the cited open dataset (Recarregados, CC BY 4.0) and the manufacturer pages listed per car. Fields left blank were not published by a source we could verify — blank means unknown, not zero.</p>
+  <div class="foot__brand">
+    <svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true" focusable="false">
+      <circle cx="24" cy="24" r="23" fill="#0d6b57"/>
+      <path d="M25.2 5.6C35.4 13.4 35.9 27.2 23.1 42.4 11.6 27.4 12.6 13.6 25.2 5.6Z" fill="#f7f6f0"/>
+      <path d="M24.9 13.4 15.4 24.7H23.9L22.9 32.4 32.6 21.1H24L24.9 13.4Z" fill="#0d6b57"/>
+    </svg>
+    <span>Carros <em>Verdes</em></span>
+  </div>
+
+  <p>Preços da planilha de 20/11/2026 (preço de tabela e campanhas). Autonomia, potência, recarga e notas editoriais vêm do conjunto aberto citado (Recarregados, CC BY 4.0) e das páginas de cada fabricante listadas em cada carro. Campos em branco não foram publicados por nenhuma fonte que pudéssemos verificar — em branco significa desconhecido, não zero.</p>
+
+  <p class="foot__legal">© 2026 Alexandre Michel Gavronski. Todos os direitos reservados. Este aplicativo — código, textos, marca e identidade visual — é de uso reservado e <b>não</b> é software livre: não é distribuído sob licença aberta, e cópia, redistribuição ou obra derivada exigem autorização por escrito do autor.</p>
+
+  <p class="foot__legal foot__legal--soft">Dados de terceiros: o conjunto Recarregados (CC BY 4.0) e as páginas de fabricantes citadas seguem as licenças e condições de seus próprios autores; aqui aparecem com atribuição e link.</p>
 </footer>
 
 <script src="views.js"></script>

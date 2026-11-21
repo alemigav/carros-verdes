@@ -1,16 +1,16 @@
-/* Car chooser — core state, scoring engine and controls. */
+/* Carros Verdes — estado central, motor de notas e controles. */
 
 const MAX_COMPARE = 4;
 
 const CRITERIA = [
-  { key: 'value', label: 'Value vs peers', hint: 'price against what similar specs cost' },
-  { key: 'range', label: 'Range', hint: 'electric range on the Inmetro/WLTP cycle' },
-  { key: 'efficiency', label: 'Efficiency', hint: 'km per kWh of battery' },
-  { key: 'charging', label: 'Fast charging', hint: 'DC power and 10–80% time' },
-  { key: 'performance', label: 'Performance', hint: 'power-to-weight and 0–100 km/h' },
-  { key: 'space', label: 'Space', hint: 'size, trunk and seats' },
-  { key: 'safety', label: 'Safety & aids', hint: 'airbags and driver-assistance features' },
-  { key: 'comfort', label: 'Comfort & tech', hint: 'screens, seats, climate, connectivity' },
+  { key: 'value', label: 'Custo-benefício', hint: 'preço comparado ao de carros com especificações parecidas' },
+  { key: 'range', label: 'Autonomia', hint: 'autonomia elétrica no ciclo Inmetro/WLTP' },
+  { key: 'efficiency', label: 'Eficiência', hint: 'km por kWh de bateria' },
+  { key: 'charging', label: 'Recarga rápida', hint: 'potência DC e tempo de 10–80%' },
+  { key: 'performance', label: 'Desempenho', hint: 'relação peso-potência e 0–100 km/h' },
+  { key: 'space', label: 'Espaço', hint: 'tamanho, porta-malas e lugares' },
+  { key: 'safety', label: 'Segurança e auxílios', hint: 'airbags e assistentes de direção' },
+  { key: 'comfort', label: 'Conforto e tecnologia', hint: 'telas, bancos, climatização, conectividade' },
 ];
 
 const PRESETS = {
@@ -23,27 +23,27 @@ const PRESETS = {
 };
 
 const MUST_HAVES = [
-  { key: 'acc', label: 'Adaptive cruise' },
-  { key: 'aeb', label: 'Auto emergency braking' },
-  { key: 'camera_360', label: '360° camera' },
-  { key: 'v2l', label: 'V2L power outlet' },
-  { key: 'bomba_de_calor', label: 'Heat pump' },
-  { key: 'teto_panoramico', label: 'Panoramic roof' },
-  { key: 'bancos_ventilados', label: 'Ventilated seats' },
-  { key: 'carregador_sem_fio', label: 'Wireless charging' },
-  { key: 'sete_lugares', label: '7 seats' },
-  { key: 'awd', label: 'AWD' },
+  { key: 'acc', label: 'Piloto adaptativo (ACC)' },
+  { key: 'aeb', label: 'Freagem automática (AEB)' },
+  { key: 'camera_360', label: 'Câmera 360°' },
+  { key: 'v2l', label: 'Tomada V2L' },
+  { key: 'bomba_de_calor', label: 'Bomba de calor' },
+  { key: 'teto_panoramico', label: 'Teto panorâmico' },
+  { key: 'bancos_ventilados', label: 'Bancos ventilados' },
+  { key: 'carregador_sem_fio', label: 'Carregador por indução' },
+  { key: 'sete_lugares', label: '7 lugares' },
+  { key: 'awd', label: 'Tração AWD' },
 ];
 
 const BODY_LABELS = {
   hatch: 'Hatch',
-  sedan: 'Sedan',
+  sedan: 'Sedã',
   suv: 'SUV',
-  picape: 'Pickup',
+  picape: 'Picape',
   minivan: 'Minivan',
-  cupe: 'Coupé',
-  perua: 'Wagon',
-  outro: 'Other',
+  cupe: 'Cupê',
+  perua: 'Perua',
+  outro: 'Outro',
 };
 
 const COMFORT_KEYS = [
@@ -88,7 +88,7 @@ const state = {
   },
 };
 
-/* ---------- formatting ---------- */
+/* ---------- formatação ---------- */
 
 const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 const brl2 = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 });
@@ -101,7 +101,7 @@ const n1 = (v) => (v == null ? '—' : dec1.format(v));
 const n0 = (v) => (v == null ? '—' : int.format(v));
 const dash = (v, unit = '') => (v == null || v === '' ? '<span class="missing">—</span>' : `${v}${unit}`);
 
-/* ---------- stats helpers ---------- */
+/* ---------- auxiliares de estatística ---------- */
 
 function percentile(cars, getter) {
   const pairs = [];
@@ -122,7 +122,7 @@ function shareOf(car, keys) {
   return known.filter((k) => car[k]).length / keys.length;
 }
 
-/* Price against the median of cars with similar battery and power. */
+/* Preço contra a mediana de carros com bateria e potência parecidas. */
 function peersValue(cars) {
   const usable = cars.filter(
     (c) => c.preco_brl && c.bateria_kwh && (c.potencia_cv || c.potencia_combinada_cv),
@@ -156,7 +156,7 @@ function peersValue(cars) {
   return ratios;
 }
 
-/* ---------- scoring ---------- */
+/* ---------- pontuação ---------- */
 
 function buildScores() {
   const cars = state.cars.filter((c) => c.motorizacao === state.mode);
@@ -220,7 +220,7 @@ function buildScores() {
   state.scores = scores;
 }
 
-/* ---------- filtering ---------- */
+/* ---------- filtros ---------- */
 
 function matchesMust(car, key) {
   if (key === 'sete_lugares') return (car.lugares || 0) >= 7;
@@ -269,7 +269,7 @@ function sortedCars(cars) {
 
 const score = (car) => state.scores.get(car.id)?.score ?? 0;
 
-/* ---------- controls ---------- */
+/* ---------- controles ---------- */
 
 function buildWeights() {
   const host = document.getElementById('weights');
@@ -395,16 +395,16 @@ function setupPriceSliders() {
   const bind = (input, key, label, unit) => {
     input.value = state.filters[key] || 0;
     if (input.dataset.bound) {
-      document.getElementById(label).textContent = state.filters[key] ? `${state.filters[key]} ${unit}` : 'any';
+      document.getElementById(label).textContent = state.filters[key] ? `${state.filters[key]} ${unit}` : 'qualquer';
       return;
     }
     input.dataset.bound = '1';
     input.addEventListener('input', () => {
       state.filters[key] = Number(input.value);
-      document.getElementById(label).textContent = input.value === '0' ? 'any' : `${input.value} ${unit}`;
+      document.getElementById(label).textContent = input.value === '0' ? 'qualquer' : `${input.value} ${unit}`;
       refresh();
     });
-    document.getElementById(label).textContent = state.filters[key] ? `${state.filters[key]} ${unit}` : 'any';
+    document.getElementById(label).textContent = state.filters[key] ? `${state.filters[key]} ${unit}` : 'qualquer';
   };
   bind(range, 'range', 'range-readout', 'km');
   bind(battery, 'battery', 'battery-readout', 'kWh');
@@ -435,7 +435,7 @@ function resetFilters() {
   document.getElementById('f-search').value = '';
   ['f-range', 'f-battery', 'f-dc'].forEach((id) => { document.getElementById(id).value = 0; });
   ['range-readout', 'battery-readout', 'dc-readout'].forEach((id) => {
-    document.getElementById(id).textContent = 'any';
+    document.getElementById(id).textContent = 'qualquer';
   });
   setupPriceSliders();
   refresh();
@@ -466,7 +466,7 @@ function refresh() {
   } catch (error) {
     console.error(error);
     document.getElementById(`view-${state.view}`).innerHTML =
-      `<div class="empty"><b>This view failed to render</b>${error.message}</div>`;
+      `<div class="empty"><b>Esta visão não pôde ser exibida</b>${error.message}</div>`;
   }
 }
 
@@ -504,7 +504,7 @@ function recompute() {
 function renderCount(cars) {
   const total = state.cars.filter((c) => c.motorizacao === state.mode).length;
   document.getElementById('result-count').textContent =
-    `${cars.length} of ${total} ${state.mode === 'BEV' ? 'electric cars' : 'plug-in hybrids'}`;
+    `${cars.length} de ${total} ${state.mode === 'BEV' ? 'carros elétricos' : 'híbridos plug-in'}`;
 }
 
 function syncChipClasses() {
@@ -543,9 +543,9 @@ function renderActiveChips() {
     chips.push({ label: value, reset: () => f.traction.delete(value) });
   }
   for (const [label, reset] of [
-    [f.range ? `Range ≥ ${f.range} km` : null, () => { f.range = 0; document.getElementById('f-range').value = 0; document.getElementById('range-readout').textContent = 'any'; }],
-    [f.battery ? `Battery ≥ ${f.battery} kWh` : null, () => { f.battery = 0; document.getElementById('f-battery').value = 0; document.getElementById('battery-readout').textContent = 'any'; }],
-    [f.dc ? `DC ≥ ${f.dc} kW` : null, () => { f.dc = 0; document.getElementById('f-dc').value = 0; document.getElementById('dc-readout').textContent = 'any'; }],
+    [f.range ? `Autonomia ≥ ${f.range} km` : null, () => { f.range = 0; document.getElementById('f-range').value = 0; document.getElementById('range-readout').textContent = 'qualquer'; }],
+    [f.battery ? `Bateria ≥ ${f.battery} kWh` : null, () => { f.battery = 0; document.getElementById('f-battery').value = 0; document.getElementById('battery-readout').textContent = 'qualquer'; }],
+    [f.dc ? `Recarga DC ≥ ${f.dc} kW` : null, () => { f.dc = 0; document.getElementById('f-dc').value = 0; document.getElementById('dc-readout').textContent = 'qualquer'; }],
   ]) {
     if (label) chips.push({ label, reset });
   }
@@ -574,7 +574,7 @@ function renderDock() {
     .map((id) => {
       const car = state.cars.find((c) => c.id === id);
       return `<span class="dock-chip">${car.marca} ${car.modelo}
-        <button data-drop="${id}" aria-label="Remove">×</button></span>`;
+        <button data-drop="${id}" aria-label="Remover">×</button></span>`;
     })
     .join('');
   tray.querySelectorAll('[data-drop]').forEach((btn) => {
@@ -583,7 +583,7 @@ function renderDock() {
   document.getElementById('dock-compare').disabled = state.selected.length < 2;
 }
 
-/* ---------- detail + compare sheets ---------- */
+/* ---------- fichas de detalhe e comparação ---------- */
 
 const overlay = document.getElementById('overlay');
 const sheet = document.getElementById('sheet');
@@ -621,8 +621,8 @@ function kv(label, value, unit = '', missingClass = true) {
 }
 
 function boolText(value) {
-  if (value === true) return '<span class="yes">Yes</span>';
-  if (value === false) return '<span class="no">No</span>';
+  if (value === true) return '<span class="yes">Sim</span>';
+  if (value === false) return '<span class="no">Não</span>';
   return '<span class="missing">—</span>';
 }
 
@@ -636,123 +636,123 @@ function openDetail(id) {
     ? null
     : `${ratio > 1 ? '+' : '−'}${Math.abs((ratio - 1) * 100).toFixed(0)}%`;
   const ratioExplain = ratio == null
-    ? 'no comparable cars'
+    ? 'sem carros comparáveis'
     : ratio > 1
-      ? 'above similar cars'
-      : 'below similar cars';
+      ? 'acima dos parecidos'
+      : 'abaixo dos parecidos';
 
   const groups = [
     {
-      title: 'Price & value',
+      title: 'Preço e valor',
       items: [
-        kv('List price', money(car.preco_brl)),
-        kv('Per kWh', car.preco_kwh ? money(car.preco_kwh) : null),
-        kv('Index vs benchmark', car.indice_vs_base ? car.indice_vs_base.toFixed(2) : null, '× R$ 3.067/kWh'),
-        kv('Price per km of range', car.preco_por_km_autonomia ? money2(car.preco_por_km_autonomia) : null),
-        kv('Price per cv', car.preco_por_cv ? money(car.preco_por_cv) : null),
-        kv('vs. similar cars', ratioText, ratioExplain),
+        kv('Preço de tabela', money(car.preco_brl)),
+        kv('Por kWh', car.preco_kwh ? money(car.preco_kwh) : null),
+        kv('Índice vs. referência', car.indice_vs_base ? car.indice_vs_base.toFixed(2) : null, '× R$ 3.067/kWh'),
+        kv('Preço por km de autonomia', car.preco_por_km_autonomia ? money2(car.preco_por_km_autonomia) : null),
+        kv('Preço por cv', car.preco_por_cv ? money(car.preco_por_cv) : null),
+        kv('vs. carros parecidos', ratioText, ratioExplain),
       ],
     },
     {
-      title: isPhev ? 'Battery & electric range' : 'Battery & range',
+      title: isPhev ? 'Bateria e autonomia elétrica' : 'Bateria e autonomia',
       items: [
-        kv('Nominal battery', kwh(car.bateria_kwh), 'kWh'),
-        kv('Gross capacity', car.bateria_bruta_kwh ? kwh(car.bateria_bruta_kwh) : null, 'kWh'),
-        kv('Chemistry', car.quimica_bateria),
-        kv(isPhev ? 'Electric range' : 'Range (Inmetro)', car.autonomia_referencia_km, 'km'),
-        kv('Range (WLTP)', car.autonomia_wltp_km, 'km'),
-        kv('Efficiency', car.eficiencia_km_kwh ? n1(car.eficiencia_km_kwh) : null, 'km/kWh'),
-        kv('Consumption', car.consumo_calc_kwh_100km ? n1(car.consumo_calc_kwh_100km) : null, 'kWh/100 km'),
+        kv('Bateria nominal', kwh(car.bateria_kwh), 'kWh'),
+        kv('Capacidade bruta', car.bateria_bruta_kwh ? kwh(car.bateria_bruta_kwh) : null, 'kWh'),
+        kv('Química', car.quimica_bateria),
+        kv(isPhev ? 'Autonomia elétrica' : 'Autonomia (Inmetro)', car.autonomia_referencia_km, 'km'),
+        kv('Autonomia (WLTP)', car.autonomia_wltp_km, 'km'),
+        kv('Eficiência', car.eficiencia_km_kwh ? n1(car.eficiencia_km_kwh) : null, 'km/kWh'),
+        kv('Consumo', car.consumo_calc_kwh_100km ? n1(car.consumo_calc_kwh_100km) : null, 'kWh/100 km'),
       ],
     },
     {
-      title: 'Charging',
+      title: 'Recarga',
       items: [
-        kv('DC peak', car.recarga_dc_kw, 'kW'),
+        kv('Pico DC', car.recarga_dc_kw, 'kW'),
         kv('DC 10–80%', car.recarga_dc_10_80_min, 'min'),
-        kv('AC onboard', car.recarga_ac_kw, 'kW'),
-        kv('DC connector', car.conector_dc),
-        kv('V2L outlet', car.v2l === true ? `Yes${car.v2l_kw ? ` (${n1(car.v2l_kw)} kW)` : ''}` : car.v2l === false ? 'No' : null),
-        kv('Heat pump', car.bomba_de_calor === true ? 'Yes' : car.bomba_de_calor === false ? 'No' : null),
+        kv('AC de bordo', car.recarga_ac_kw, 'kW'),
+        kv('Conector DC', car.conector_dc),
+        kv('Tomada V2L', car.v2l === true ? `Sim${car.v2l_kw ? ` (${n1(car.v2l_kw)} kW)` : ''}` : car.v2l === false ? 'Não' : null),
+        kv('Bomba de calor', car.bomba_de_calor === true ? 'Sim' : car.bomba_de_calor === false ? 'Não' : null),
       ],
     },
     {
-      title: 'Powertrain',
+      title: 'Motorização',
       items: [
-        kv('Power', car.potencia_cv || car.potencia_combinada_cv, 'cv'),
+        kv('Potência', car.potencia_cv || car.potencia_combinada_cv, 'cv'),
         kv('Torque', car.torque_nm || car.torque_combinado_nm, 'Nm'),
-        kv('Drivetrain', car.tracao),
-        kv('Motors', car.motores_qtd),
+        kv('Tração', car.tracao),
+        kv('Motores', car.motores_qtd),
         kv('0–100 km/h', car.zero_a_cem_s ? n1(car.zero_a_cem_s) : null, 's'),
-        kv('Top speed', car.velocidade_max_kmh, 'km/h'),
-        kv('Kerb weight', car.peso_kg ? n0(car.peso_kg) : null, 'kg'),
-        kv('Power-to-weight', car.cv_por_tonelada ? n1(car.cv_por_tonelada) : null, 'cv/t'),
+        kv('Velocidade máxima', car.velocidade_max_kmh, 'km/h'),
+        kv('Peso em ordem de marcha', car.peso_kg ? n0(car.peso_kg) : null, 'kg'),
+        kv('Relação peso-potência', car.cv_por_tonelada ? n1(car.cv_por_tonelada) : null, 'cv/t'),
         ...(isPhev
           ? [
-              kv('Combustion engine', car.motor_termico),
-              kv('Fuel', car.combustivel),
-              kv('Tank', car.tanque_l ? n1(car.tanque_l) : null, 'L'),
-              kv('Fuel use', car.consumo_l_100km ? n1(car.consumo_l_100km) : null, 'L/100 km'),
-              kv('Transmission', car.cambio),
+              kv('Motor a combustão', car.motor_termico),
+              kv('Combustível', car.combustivel),
+              kv('Tanque', car.tanque_l ? n1(car.tanque_l) : null, 'L'),
+              kv('Consumo de combustível', car.consumo_l_100km ? n1(car.consumo_l_100km) : null, 'L/100 km'),
+              kv('Câmbio', car.cambio),
             ]
           : []),
       ],
     },
     {
-      title: 'Size & practicality',
+      title: 'Dimensões e praticidade',
       items: [
-        kv('Body', BODY_LABELS[car.carroceria] || car.carroceria),
-        kv('Segment', car.segmento),
-        kv('Seats', car.lugares),
-        kv('Length', car.comprimento_mm ? n0(car.comprimento_mm) : null, 'mm'),
-        kv('Width', car.largura_mm ? n0(car.largura_mm) : null, 'mm'),
-        kv('Height', car.altura_mm ? n0(car.altura_mm) : null, 'mm'),
-        kv('Wheelbase', car.entre_eixos_mm ? n0(car.entre_eixos_mm) : null, 'mm'),
-        kv('Ground clearance', car.altura_livre_solo_mm ? n0(car.altura_livre_solo_mm) : null, 'mm'),
-        kv('Trunk', car.porta_malas_l ? n0(car.porta_malas_l) : null, 'L'),
-        kv('Trunk (seats down)', car.porta_malas_max_l ? n0(car.porta_malas_max_l) : null, 'L'),
+        kv('Carroceria', BODY_LABELS[car.carroceria] || car.carroceria),
+        kv('Segmento', car.segmento),
+        kv('Lugares', car.lugares),
+        kv('Comprimento', car.comprimento_mm ? n0(car.comprimento_mm) : null, 'mm'),
+        kv('Largura', car.largura_mm ? n0(car.largura_mm) : null, 'mm'),
+        kv('Altura', car.altura_mm ? n0(car.altura_mm) : null, 'mm'),
+        kv('Entre-eixos', car.entre_eixos_mm ? n0(car.entre_eixos_mm) : null, 'mm'),
+        kv('Vão livre do solo', car.altura_livre_solo_mm ? n0(car.altura_livre_solo_mm) : null, 'mm'),
+        kv('Porta-malas', car.porta_malas_l ? n0(car.porta_malas_l) : null, 'L'),
+        kv('Porta-malas (bancos rebatidos)', car.porta_malas_max_l ? n0(car.porta_malas_max_l) : null, 'L'),
       ],
     },
     {
-      title: 'Safety',
+      title: 'Segurança',
       items: [
         kv('Airbags', car.airbags),
-        kv('Adaptive cruise', boolText(car.acc)),
-        kv('City braking (AEB)', boolText(car.aeb)),
-        kv('Lane keep', boolText(car.lka)),
-        kv('Blind spot', boolText(car.bsm)),
-        kv('Rear cross traffic', boolText(car.rcta)),
+        kv('Piloto adaptativo (ACC)', boolText(car.acc)),
+        kv('Freagem urbana (AEB)', boolText(car.aeb)),
+        kv('Centralização de faixa', boolText(car.lka)),
+        kv('Ponto cego', boolText(car.bsm)),
+        kv('Tráfego cruzado traseiro', boolText(car.rcta)),
         kv('360° camera', boolText(car.camera_360)),
-        kv('Parking sensors', boolText(car.sensor_estacionamento)),
-        kv('Assist level', car.adas_nivel),
+        kv('Sensores de estacionamento', boolText(car.sensor_estacionamento)),
+        kv('Nível de assistência', car.adas_nivel),
       ],
     },
     {
-      title: 'Comfort & tech',
+      title: 'Conforto e tecnologia',
       items: [
-        kv('Centre screen', car.tela_central_pol ? `${n1(car.tela_central_pol)}"` : null),
-        kv('Digital cluster', car.cluster_digital_pol ? `${n1(car.cluster_digital_pol)}"` : null),
+        kv('Tela central', car.tela_central_pol ? `${n1(car.tela_central_pol)}"` : null),
+        kv('Quadro digital', car.cluster_digital_pol ? `${n1(car.cluster_digital_pol)}"` : null),
         kv('Apple CarPlay', car.carplay),
         kv('Android Auto', car.android_auto),
-        kv('Wireless charging', boolText(car.carregador_sem_fio)),
-        kv('Speakers', car.som_alto_falantes ? `${car.som_alto_falantes}${car.som_marca ? ` · ${car.som_marca}` : ''}` : null),
-        kv('Climate', car.ar_condicionado),
-        kv('Power seats', boolText(car.banco_eletrico)),
-        kv('Ventilated seats', boolText(car.bancos_ventilados)),
-        kv('Heated seats', boolText(car.bancos_aquecidos)),
-        kv('Panoramic roof', boolText(car.teto_panoramico)),
+        kv('Carregador por indução', boolText(car.carregador_sem_fio)),
+        kv('Alto-falantes', car.som_alto_falantes ? `${car.som_alto_falantes}${car.som_marca ? ` · ${car.som_marca}` : ''}` : null),
+        kv('Climatização', car.ar_condicionado),
+        kv('Bancos elétricos', boolText(car.banco_eletrico)),
+        kv('Bancos ventilados', boolText(car.bancos_ventilados)),
+        kv('Bancos aquecidos', boolText(car.bancos_aquecidos)),
+        kv('Teto panorâmico', boolText(car.teto_panoramico)),
         kv('Head-up display', boolText(car.head_up_display)),
       ],
     },
     {
-      title: 'Warranty & ownership',
+      title: 'Garantia e propriedade',
       items: [
-        kv('Vehicle', car.garantia_veiculo_anos ? `${car.garantia_veiculo_anos} yr` : null,
+        kv('Veículo', car.garantia_veiculo_anos ? `${car.garantia_veiculo_anos} anos` : null,
           car.garantia_veiculo_km ? `· ${n0(car.garantia_veiculo_km)} km` : ''),
-        kv('Battery', car.garantia_bateria_anos ? `${car.garantia_bateria_anos} yr` : null,
+        kv('Bateria', car.garantia_bateria_anos ? `${car.garantia_bateria_anos} anos` : null,
           car.garantia_bateria_km ? `· ${n0(car.garantia_bateria_km)} km` : ''),
-        kv('Editorial rating', car.nota ? `${n1(car.nota)}/10` : null),
-        kv('Spec fields verified', `${car.campos_preenchidos} of 61`),
+        kv('Nota editorial', car.nota ? `${n1(car.nota)}/10` : null),
+        kv('Campos verificados', `${car.campos_preenchidos} de 61`),
       ],
     },
   ];
@@ -763,25 +763,25 @@ function openDetail(id) {
   const html = `
     <div class="sheet__head">
       <div>
-        <p>${car.marca} · ${BODY_LABELS[car.carroceria] || car.carroceria || ''} ${car.motorizacao === 'PHEV' ? '· plug-in hybrid' : '· electric'}</p>
+        <p>${car.marca} · ${BODY_LABELS[car.carroceria] || car.carroceria || ''} ${car.motorizacao === 'PHEV' ? '· híbrido plug-in' : '· elétrico'}</p>
         <h2>${car.modelo}</h2>
         <p>${car.versao || car.versao_pesquisada || ''}</p>
       </div>
-      <button class="close-btn" data-close aria-label="Close">×</button>
+      <button class="close-btn" data-close aria-label="Fechar">×</button>
     </div>
     <div class="sheet__body">
       <div class="detail-hero">
         <div>
-          <div class="detail-price">${money(car.preco_brl)} <small>${car.preco_brl ? 'list / campaign price' : 'no public price'}</small></div>
+          <div class="detail-price">${money(car.preco_brl)} <small>${car.preco_brl ? 'preço de tabela / campanha' : 'sem preço público'}</small></div>
           <p class="hint" style="margin:6px 0 0">${car.observacao_preco || ''}</p>
         </div>
         <div style="text-align:right">
           <div class="ring" style="width:62px;height:62px;margin-left:auto">${ringSvg(s.score, 62)}</div>
-          <span class="conf conf--${conf}"><i></i>${conf === 'alta' ? 'verified' : conf === 'media' ? 'partly verified' : 'thin sources'}</span>
+          <span class="conf conf--${conf}"><i></i>${conf === 'alta' ? 'verificado' : conf === 'media' ? 'parcialmente verificado' : 'poucas fontes'}</span>
         </div>
       </div>
       ${s
-        ? `<section class="spec-section"><h4>How it scores with your weights</h4>
+        ? `<section class="spec-section"><h4>Como pontua com os seus pesos</h4>
             <div class="breakdown">${CRITERIA.map((c) => {
               const value = Math.round((s.parts[c.key] || 0) * 100);
               const weight = Math.round(((state.weights[c.key] || 0) / (CRITERIA.reduce((sum, x) => sum + (state.weights[x.key] || 0), 0) || 1)) * 100);
@@ -792,7 +792,7 @@ function openDetail(id) {
                 <span class="breakdown__weight">${weight}%</span>
               </div>`;
             }).join('')}</div>
-            <p class="hint" style="margin:8px 0 0">Each bar is how this car ranks against the other ${state.mode === 'BEV' ? 'electric' : 'plug-in'} cars on that criterion (0–100). The last column is how much weight you gave it.</p>
+            <p class="hint" style="margin:8px 0 0">Cada barra mostra como este carro se posiciona frente aos outros ${state.mode === 'BEV' ? 'elétricos' : 'plug-in'} nesse critério (0–100). A última coluna é o peso que você deu a ele.</p>
           </section>`
         : ''}
       ${groups
@@ -801,17 +801,17 @@ function openDetail(id) {
             <div class="kv-grid">${g.items.join('')}</div></section>`,
         )
         .join('')}
-      ${car.alerta_versao ? `<div class="notes" style="background:#f8ecdf"><b>Version check</b>${car.alerta_versao}</div>` : ''}
-      ${car.observacoes ? `<div class="notes"><b>What to know</b>${car.observacoes}</div>` : ''}
+      ${car.alerta_versao ? `<div class="notes" style="background:#f8ecdf"><b>Atenção à versão</b>${car.alerta_versao}</div>` : ''}
+      ${car.observacoes ? `<div class="notes"><b>O que saber</b>${car.observacoes}</div>` : ''}
       ${sourceList.length
-        ? `<div class="sources"><h4>Sources</h4>${sourceList
+        ? `<div class="sources"><h4>Fontes</h4>${sourceList
             .slice(0, 8)
             .map((u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`)
             .join('')}</div>`
         : ''}
       <div style="margin-top:20px;display:flex;gap:8px">
         <button class="primary-btn" data-add="${car.id}" style="flex:1">${
-          state.selected.includes(car.id) ? 'Remove from comparison' : 'Add to comparison'
+          state.selected.includes(car.id) ? 'Remover da comparação' : 'Adicionar à comparação'
         }</button>
       </div>
     </div>`;
@@ -839,65 +839,65 @@ function ringSvg(value, size = 54) {
   <span class="ring__num">${Math.round(value)}<small>/100</small></span>`;
 }
 
-/* ---------- compare ---------- */
+/* ---------- comparação ---------- */
 
 function openCompare() {
   const cars = state.selected.map((id) => state.cars.find((c) => c.id === id)).filter(Boolean);
   if (cars.length < 2) return;
 
   const rows = [
-    { group: 'Price' },
-    { label: 'List price', get: (c) => c.preco_brl, fmt: (v) => money(v), better: 'low' },
-    { label: 'Per kWh', get: (c) => c.preco_kwh, fmt: (v) => money(v), better: 'low' },
-    { label: 'Price per km of range', get: (c) => c.preco_por_km_autonomia, fmt: (v) => money2(v), better: 'low' },
-    { label: 'vs. similar cars', get: (c) => state.scores.get(c.id)?.valueRatio, fmt: (v) => `${v > 1 ? '+' : '−'}${Math.abs((v - 1) * 100).toFixed(0)}%`, better: 'low' },
-    { group: 'Battery & range' },
-    { label: 'Battery (nominal)', get: (c) => c.bateria_kwh, fmt: (v) => `${kwh(v)} kWh`, better: 'high' },
-    { label: 'Chemistry', get: (c) => c.quimica_bateria },
-    { label: 'Range', get: (c) => c.autonomia_referencia_km, fmt: (v) => `${n0(v)} km`, better: 'high' },
-    { label: 'Efficiency', get: (c) => c.eficiencia_km_kwh, fmt: (v) => `${n1(v)} km/kWh`, better: 'high' },
-    { label: 'Consumption', get: (c) => c.consumo_calc_kwh_100km, fmt: (v) => `${n1(v)} kWh/100km`, better: 'low' },
-    { group: 'Charging' },
-    { label: 'DC peak', get: (c) => c.recarga_dc_kw, fmt: (v) => `${n0(v)} kW`, better: 'high' },
+    { group: 'Preço' },
+    { label: 'Preço de tabela', get: (c) => c.preco_brl, fmt: (v) => money(v), better: 'low' },
+    { label: 'Por kWh', get: (c) => c.preco_kwh, fmt: (v) => money(v), better: 'low' },
+    { label: 'Preço por km de autonomia', get: (c) => c.preco_por_km_autonomia, fmt: (v) => money2(v), better: 'low' },
+    { label: 'vs. carros parecidos', get: (c) => state.scores.get(c.id)?.valueRatio, fmt: (v) => `${v > 1 ? '+' : '−'}${Math.abs((v - 1) * 100).toFixed(0)}%`, better: 'low' },
+    { group: 'Bateria e autonomia' },
+    { label: 'Bateria (nominal)', get: (c) => c.bateria_kwh, fmt: (v) => `${kwh(v)} kWh`, better: 'high' },
+    { label: 'Química', get: (c) => c.quimica_bateria },
+    { label: 'Autonomia', get: (c) => c.autonomia_referencia_km, fmt: (v) => `${n0(v)} km`, better: 'high' },
+    { label: 'Eficiência', get: (c) => c.eficiencia_km_kwh, fmt: (v) => `${n1(v)} km/kWh`, better: 'high' },
+    { label: 'Consumo', get: (c) => c.consumo_calc_kwh_100km, fmt: (v) => `${n1(v)} kWh/100 km`, better: 'low' },
+    { group: 'Recarga' },
+    { label: 'Pico DC', get: (c) => c.recarga_dc_kw, fmt: (v) => `${n0(v)} kW`, better: 'high' },
     { label: 'DC 10–80%', get: (c) => c.recarga_dc_10_80_min, fmt: (v) => `${n0(v)} min`, better: 'low' },
-    { label: 'AC onboard', get: (c) => c.recarga_ac_kw, fmt: (v) => `${n1(v)} kW`, better: 'high' },
+    { label: 'AC de bordo', get: (c) => c.recarga_ac_kw, fmt: (v) => `${n1(v)} kW`, better: 'high' },
     { label: 'V2L', get: (c) => c.v2l, fmt: boolText },
-    { label: 'Heat pump', get: (c) => c.bomba_de_calor, fmt: boolText },
-    { group: 'Powertrain' },
-    { label: 'Power', get: (c) => c.potencia_cv || c.potencia_combinada_cv, fmt: (v) => `${n0(v)} cv`, better: 'high' },
+    { label: 'Bomba de calor', get: (c) => c.bomba_de_calor, fmt: boolText },
+    { group: 'Motorização' },
+    { label: 'Potência', get: (c) => c.potencia_cv || c.potencia_combinada_cv, fmt: (v) => `${n0(v)} cv`, better: 'high' },
     { label: 'Torque', get: (c) => c.torque_nm || c.torque_combinado_nm, fmt: (v) => `${n0(v)} Nm`, better: 'high' },
-    { label: 'Drivetrain', get: (c) => c.tracao },
+    { label: 'Tração', get: (c) => c.tracao },
     { label: '0–100 km/h', get: (c) => c.zero_a_cem_s, fmt: (v) => `${n1(v)} s`, better: 'low' },
-    { label: 'Weight', get: (c) => c.peso_kg, fmt: (v) => `${n0(v)} kg`, better: 'low' },
-    { label: 'Power-to-weight', get: (c) => c.cv_por_tonelada, fmt: (v) => `${n1(v)} cv/t`, better: 'high' },
-    { group: 'Space' },
-    { label: 'Body', get: (c) => BODY_LABELS[c.carroceria] || c.carroceria },
-    { label: 'Seats', get: (c) => c.lugares, fmt: (v) => `${v}`, better: 'high' },
-    { label: 'Length', get: (c) => c.comprimento_mm, fmt: (v) => `${n0(v)} mm`, better: 'high' },
-    { label: 'Wheelbase', get: (c) => c.entre_eixos_mm, fmt: (v) => `${n0(v)} mm`, better: 'high' },
-    { label: 'Ground clearance', get: (c) => c.altura_livre_solo_mm, fmt: (v) => `${n0(v)} mm`, better: 'high' },
-    { label: 'Trunk', get: (c) => c.porta_malas_l, fmt: (v) => `${n0(v)} L`, better: 'high' },
-    { group: 'Safety' },
+    { label: 'Peso', get: (c) => c.peso_kg, fmt: (v) => `${n0(v)} kg`, better: 'low' },
+    { label: 'Relação peso-potência', get: (c) => c.cv_por_tonelada, fmt: (v) => `${n1(v)} cv/t`, better: 'high' },
+    { group: 'Espaço' },
+    { label: 'Carroceria', get: (c) => BODY_LABELS[c.carroceria] || c.carroceria },
+    { label: 'Lugares', get: (c) => c.lugares, fmt: (v) => `${v}`, better: 'high' },
+    { label: 'Comprimento', get: (c) => c.comprimento_mm, fmt: (v) => `${n0(v)} mm`, better: 'high' },
+    { label: 'Entre-eixos', get: (c) => c.entre_eixos_mm, fmt: (v) => `${n0(v)} mm`, better: 'high' },
+    { label: 'Vão livre do solo', get: (c) => c.altura_livre_solo_mm, fmt: (v) => `${n0(v)} mm`, better: 'high' },
+    { label: 'Porta-malas', get: (c) => c.porta_malas_l, fmt: (v) => `${n0(v)} L`, better: 'high' },
+    { group: 'Segurança' },
     { label: 'Airbags', get: (c) => c.airbags, fmt: (v) => `${v}`, better: 'high' },
-    { label: 'Adaptive cruise', get: (c) => c.acc, fmt: boolText },
-    { label: 'City braking (AEB)', get: (c) => c.aeb, fmt: boolText },
-    { label: 'Lane keep', get: (c) => c.lka, fmt: boolText },
-    { label: 'Blind spot', get: (c) => c.bsm, fmt: boolText },
+    { label: 'Piloto adaptativo (ACC)', get: (c) => c.acc, fmt: boolText },
+    { label: 'Freagem urbana (AEB)', get: (c) => c.aeb, fmt: boolText },
+    { label: 'Centralização de faixa', get: (c) => c.lka, fmt: boolText },
+    { label: 'Ponto cego', get: (c) => c.bsm, fmt: boolText },
     { label: '360° camera', get: (c) => c.camera_360, fmt: boolText },
-    { label: 'Parking sensors', get: (c) => c.sensor_estacionamento, fmt: boolText },
-    { group: 'Comfort & tech' },
-    { label: 'Centre screen', get: (c) => c.tela_central_pol, fmt: (v) => `${n1(v)}"`, better: 'high' },
+    { label: 'Sensores de estacionamento', get: (c) => c.sensor_estacionamento, fmt: boolText },
+    { group: 'Conforto e tecnologia' },
+    { label: 'Tela central', get: (c) => c.tela_central_pol, fmt: (v) => `${n1(v)}"`, better: 'high' },
     { label: 'CarPlay', get: (c) => c.carplay },
     { label: 'Android Auto', get: (c) => c.android_auto },
-    { label: 'Wireless charging', get: (c) => c.carregador_sem_fio, fmt: boolText },
-    { label: 'Speakers', get: (c) => c.som_alto_falantes, fmt: (v) => `${v}`, better: 'high' },
-    { label: 'Climate', get: (c) => c.ar_condicionado },
-    { label: 'Panoramic roof', get: (c) => c.teto_panoramico, fmt: boolText },
-    { label: 'Ventilated seats', get: (c) => c.bancos_ventilados, fmt: boolText },
-    { group: 'Ownership' },
-    { label: 'Battery warranty', get: (c) => c.garantia_bateria_anos ? `${c.garantia_bateria_anos} yr / ${c.garantia_bateria_km ? n0(c.garantia_bateria_km) + ' km' : '—'}` : null },
-    { label: 'Editorial rating', get: (c) => c.nota, fmt: (v) => `${n1(v)}/10`, better: 'high' },
-    { label: 'Your score', get: (c) => state.scores.get(c.id)?.score, fmt: (v) => `${Math.round(v)}/100`, better: 'high' },
+    { label: 'Carregador por indução', get: (c) => c.carregador_sem_fio, fmt: boolText },
+    { label: 'Alto-falantes', get: (c) => c.som_alto_falantes, fmt: (v) => `${v}`, better: 'high' },
+    { label: 'Climatização', get: (c) => c.ar_condicionado },
+    { label: 'Teto panorâmico', get: (c) => c.teto_panoramico, fmt: boolText },
+    { label: 'Bancos ventilados', get: (c) => c.bancos_ventilados, fmt: boolText },
+    { group: 'Propriedade' },
+    { label: 'Garantia da bateria', get: (c) => c.garantia_bateria_anos ? `${c.garantia_bateria_anos} anos / ${c.garantia_bateria_km ? n0(c.garantia_bateria_km) + ' km' : '—'}` : null },
+    { label: 'Nota editorial', get: (c) => c.nota, fmt: (v) => `${n1(v)}/10`, better: 'high' },
+    { label: 'Sua nota', get: (c) => state.scores.get(c.id)?.score, fmt: (v) => `${Math.round(v)}/100`, better: 'high' },
   ];
 
   const groups = [];
@@ -947,7 +947,7 @@ function openCompare() {
         <div class="cmp-sub">${c.marca} · ${c.versao || ''}</div>
         <div class="cmp-price">${money(c.preco_brl)}</div>
         <button class="close-btn" style="width:22px;height:22px;font-size:12px;margin-top:6px"
-          data-unpick="${c.id}" aria-label="Remove">×</button>
+          data-unpick="${c.id}" aria-label="Remover">×</button>
       </th>`,
     )
     .join('');
@@ -955,21 +955,21 @@ function openCompare() {
   const html = `
     <div class="sheet__head">
       <div>
-        <p>Side by side · best value in each row is marked</p>
-        <h2>${cars.length} cars compared</h2>
+        <p>Lado a lado · o melhor valor de cada linha está marcado</p>
+        <h2>${cars.length} carros comparados</h2>
       </div>
-      <button class="close-btn" data-close aria-label="Close">×</button>
+      <button class="close-btn" data-close aria-label="Fechar">×</button>
     </div>
     <div class="sheet__body">
       <div class="cmp-wrap">
         <table class="cmp">
-          <thead><tr><th>Specification</th>${heads}</tr></thead>
+          <thead><tr><th>Especificação</th>${heads}</tr></thead>
           <tbody>${body}</tbody>
         </table>
       </div>
       <p class="hint" style="margin-top:12px">
-        ◆ marks the best value in a row. A dash means no source we could verify published that number for this version —
-        it is unknown, not zero.
+        ◆ marca o melhor valor da linha. Um traço significa que nenhuma fonte que pudéssemos verificar publicou esse número
+        para esta versão — é desconhecido, não zero.
       </p>
     </div>`;
 
@@ -982,21 +982,21 @@ function openCompare() {
   });
 }
 
-/* ---------- export ---------- */
+/* ---------- exportação ---------- */
 
 function exportCsv() {
   const cars = sortedCars(currentCars());
   const columns = [
     ['Marca', (c) => c.marca],
     ['Modelo', (c) => c.modelo],
-    ['Versao', (c) => c.versao],
-    ['Motorizacao', (c) => c.motorizacao],
-    ['Preco R$', (c) => c.preco_brl],
-    ['Score', (c) => Math.round(score(c))],
+    ['Versão', (c) => c.versao],
+    ['Motorização', (c) => c.motorizacao],
+    ['Preço R$', (c) => c.preco_brl],
+    ['Nota', (c) => Math.round(score(c))],
     ['Bateria kWh', (c) => c.bateria_kwh],
     ['Autonomia km', (c) => c.autonomia_referencia_km],
     ['km/kWh', (c) => c.eficiencia_km_kwh],
-    ['Potencia cv', (c) => c.potencia_cv || c.potencia_combinada_cv],
+    ['Potência cv', (c) => c.potencia_cv || c.potencia_combinada_cv],
     ['Torque Nm', (c) => c.torque_nm || c.torque_combinado_nm],
     ['0-100 s', (c) => c.zero_a_cem_s],
     ['DC kW', (c) => c.recarga_dc_kw],
@@ -1010,7 +1010,7 @@ function exportCsv() {
     ['Airbags', (c) => c.airbags],
     ['ACC', (c) => c.acc],
     ['AEB', (c) => c.aeb],
-    ['Camera 360', (c) => c.camera_360],
+    ['Câmera 360', (c) => c.camera_360],
     ['V2L', (c) => c.v2l],
     ['Bomba de calor', (c) => c.bomba_de_calor],
     ['Garantia bateria (anos)', (c) => c.garantia_bateria_anos],
@@ -1026,7 +1026,7 @@ function exportCsv() {
 
   const cell = (value) => {
     if (value == null || value === '') return '';
-    if (typeof value === 'boolean') return value ? 'sim' : 'nao';
+    if (typeof value === 'boolean') return value ? 'sim' : 'não';
     if (typeof value === 'number') return String(Math.round(value * 100) / 100).replace('.', ',');
     return `"${String(value).replace(/"/g, '""')}"`;
   };
@@ -1038,14 +1038,14 @@ function exportCsv() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `carros-${state.mode.toLowerCase()}-${new Date().toISOString().slice(0, 10)}.csv`;
+  link.download = `carros-verdes-${state.mode === 'BEV' ? 'eletricos' : 'plug-in'}-${new Date().toISOString().slice(0, 10)}.csv`;
   document.body.appendChild(link);
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
 }
 
-/* ---------- boot ---------- */
+/* ---------- inicialização ---------- */
 
 async function boot() {
   const response = await fetch('data/cars.json');
@@ -1058,7 +1058,14 @@ async function boot() {
   document.getElementById('count-bev').textContent = bev;
   document.getElementById('count-phev').textContent = phev;
   document.getElementById('topbar-meta').textContent =
-    `Prices ${state.meta.preco_referencia} · ${bev} electric + ${phev} plug-in hybrid · ${state.cars.length} versions`;
+    `Preços de ${state.meta.preco_referencia} · ${bev} elétricos + ${phev} plug-in · ${state.cars.length} versões`;
+
+  const priced = state.cars.filter((c) => c.preco_brl);
+  const from = priced.length ? Math.min(...priced.map((c) => c.preco_brl)) : null;
+  document.getElementById('hero-bev').textContent = bev;
+  document.getElementById('hero-phev').textContent = phev;
+  document.getElementById('hero-total').textContent = state.cars.length;
+  document.getElementById('hero-range').textContent = money(from);
 
   buildWeights();
   buildFilterChips();
@@ -1140,5 +1147,5 @@ async function boot() {
 
 boot().catch((error) => {
   document.getElementById('view-cards').innerHTML =
-    `<div class="empty"><b>Could not load the dataset</b>${error.message}<br>Run a local server in this folder: <code>python3 -m http.server 8000</code></div>`;
+    `<div class="empty"><b>Não foi possível carregar os dados</b>${error.message}<br>Rode um servidor local nesta pasta: <code>python3 -m http.server 8000</code></div>`;
 });
