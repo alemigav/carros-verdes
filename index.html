@@ -57,10 +57,6 @@
     </a>
 
     <div class="masthead__controls">
-      <div class="switch" id="dataset-switch" role="tablist" aria-label="Tipo de motorização">
-        <button role="tab" data-mode="BEV" class="is-active" aria-selected="true">100% elétricos <span id="count-bev"></span></button>
-        <button role="tab" data-mode="PHEV" aria-selected="false">Plug-in flex <span id="count-phev"></span></button>
-      </div>
       <button class="ghost-btn" id="btn-sidebar" aria-expanded="false" aria-controls="sidebar">Filtros</button>
     </div>
   </div>
@@ -161,6 +157,20 @@
   </aside>
 
   <main class="main">
+    <div class="mode-picker">
+      <span class="mode-picker__label" id="mode-picker-label">Painel</span>
+      <div class="mode-switch" id="dataset-switch" role="tablist" aria-labelledby="mode-picker-label">
+        <button role="tab" data-mode="BEV" class="is-active" aria-selected="true">
+          <span class="mode-switch__name">100% elétricos</span>
+          <span class="mode-switch__meta"><span id="count-bev">—</span> versões</span>
+        </button>
+        <button role="tab" data-mode="PHEV" aria-selected="false">
+          <span class="mode-switch__name">Híbridos plug-in flex</span>
+          <span class="mode-switch__meta"><span id="count-phev">—</span> versões</span>
+        </button>
+      </div>
+    </div>
+
     <div class="toolbar">
       <div class="toolbar__left">
         <span class="result-count" id="result-count">—</span>

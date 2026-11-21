@@ -133,6 +133,72 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .masthead__meta p { margin: 0; }
 .masthead__credit { white-space: nowrap; }
 
+/* ---------- seletor de painel ---------- */
+
+.mode-picker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.mode-picker__label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.mode-switch {
+  display: inline-flex;
+  gap: 6px;
+  padding: 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+.mode-switch button {
+  display: grid;
+  gap: 1px;
+  text-align: left;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-2);
+  padding: 8px 18px;
+  border-radius: 9px;
+  transition: background .15s, color .15s, box-shadow .15s;
+}
+
+.mode-switch__name {
+  font-size: 14.5px;
+  font-weight: 640;
+  letter-spacing: -.015em;
+  white-space: nowrap;
+}
+
+.mode-switch__meta {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.mode-switch button:hover { background: #e6e4da; color: var(--ink); }
+
+.mode-switch button.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fffefb;
+  box-shadow: 0 2px 8px -3px rgba(10, 77, 63, .75);
+}
+
+.mode-switch button.is-active .mode-switch__meta { color: rgba(255, 254, 251, .74); }
+
+.mode-switch button.is-active:hover { background: #0b5d4c; }
+
 .switch {
   display: inline-flex;
   padding: 3px;
@@ -805,8 +871,13 @@ table.cmp .cmp-price { font-family: var(--mono); font-size: 12px; margin-top: 4p
 
 @media (max-width: 720px) {
   .masthead__bar { flex-wrap: wrap; gap: 10px; padding: 10px 16px 6px; }
+  .masthead__controls { margin-left: auto; }
   .brand__mark svg { width: 38px; height: 38px; }
   .masthead__meta { flex-wrap: wrap; gap: 2px 12px; padding: 0 16px 8px; }
+  .mode-picker { flex-direction: column; align-items: stretch; gap: 6px; margin-bottom: 12px; }
+  .mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .mode-switch button { padding: 8px 10px; }
+  .mode-switch__name { font-size: 12.5px; white-space: normal; line-height: 1.25; }
   .toolbar__left, .toolbar__right { width: 100%; }
   .switch--small { flex: 1 1 100%; }
   .switch--small button { flex: 1; white-space: nowrap; padding: 6px 4px; }
