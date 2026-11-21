@@ -1,0 +1,172 @@
+[
+ {
+  "id": "bmw-ix2-xdrive30-m-sport",
+  "marca": "BMW",
+  "modelo": "iX2",
+  "versao": "xDrive30 M Sport",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 495950,
+  "bateria_kwh_planilha": 64.8,
+  "observacao": "Preço inicial publicado",
+  "referencia_dados_abertos": {
+   "versao": "xDrive30 M Sport",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 327,
+   "potencia_cv": 306,
+   "zero_a_cem_s": 5.6,
+   "recarga_dc_kw": 130,
+   "porta_malas_l": 525,
+   "nota": 7.8
+  }
+ },
+ {
+  "id": "lexus-rz-500e-direct4-awd",
+  "marca": "Lexus",
+  "modelo": "RZ",
+  "versao": "500e DIRECT4 AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 500622,
+  "bateria_kwh_planilha": 76.96,
+  "observacao": "Preço de tabela"
+ },
+ {
+  "id": "chevrolet-blazer-ev-rs-rwd",
+  "marca": "Chevrolet",
+  "modelo": "Blazer EV",
+  "versao": "RS RWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 503190,
+  "bateria_kwh_planilha": 102.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "RS RWD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 481,
+   "potencia_cv": null,
+   "zero_a_cem_s": 5.8,
+   "recarga_dc_kw": 190,
+   "porta_malas_l": 436,
+   "nota": 7
+  }
+ },
+ {
+  "id": "mg-cyberster-awd",
+  "marca": "MG",
+  "modelo": "Cyberster",
+  "versao": "AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 529800,
+  "bateria_kwh_planilha": 77.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "AWD 77 kWh",
+   "carroceria": "cupe",
+   "autonomia_inmetro_km": 342,
+   "potencia_cv": 510,
+   "zero_a_cem_s": 3.2,
+   "recarga_dc_kw": 150,
+   "porta_malas_l": 249,
+   "nota": 7.4
+  }
+ },
+ {
+  "id": "lexus-es-500e-versao-de-entrada-lancamento-novembro",
+  "marca": "Lexus",
+  "modelo": "ES 500e",
+  "versao": "Versão de entrada, lançamento novembro",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 549990,
+  "bateria_kwh_planilha": 74.7,
+  "observacao": "Preço e bateria publicados em novembro"
+ },
+ {
+  "id": "byd-han-ev-awd",
+  "marca": "BYD",
+  "modelo": "Han",
+  "versao": "EV AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 559800,
+  "bateria_kwh_planilha": 85.4,
+  "observacao": "Preço de tabela"
+ },
+ {
+  "id": "audi-q6-e-tron-s-line-quattro",
+  "marca": "Audi",
+  "modelo": "Q6 e-tron",
+  "versao": "S line quattro",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 559990,
+  "bateria_kwh_planilha": 100.0,
+  "observacao": "Preço inicial no catálogo; fichas podem variar por versão",
+  "referencia_dados_abertos": {
+   "versao": "S Line",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 424,
+   "potencia_cv": 428,
+   "zero_a_cem_s": 5.1,
+   "recarga_dc_kw": 270,
+   "porta_malas_l": 526,
+   "nota": 7.8
+  }
+ },
+ {
+  "id": "bmw-i4-edrive40-m-sport",
+  "marca": "BMW",
+  "modelo": "i4",
+  "versao": "eDrive40 M Sport",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 582950,
+  "bateria_kwh_planilha": 81.3,
+  "observacao": "Preço inicial publicado",
+  "referencia_dados_abertos": {
+   "versao": "eDrive40 M Sport",
+   "carroceria": "sedan",
+   "autonomia_inmetro_km": 399,
+   "potencia_cv": 340,
+   "zero_a_cem_s": 5.7,
+   "recarga_dc_kw": 205,
+   "porta_malas_l": null,
+   "nota": 7.4
+  }
+ },
+ {
+  "id": "bmw-ix3-50-xdrive",
+  "marca": "BMW",
+  "modelo": "iX3",
+  "versao": "50 xDrive",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 587950,
+  "bateria_kwh_planilha": 108.7,
+  "observacao": "Preço inicial publicado",
+  "referencia_dados_abertos": {
+   "versao": "50 xDrive (Neue Klasse)",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 570,
+   "potencia_cv": 469,
+   "zero_a_cem_s": 4.9,
+   "recarga_dc_kw": 400,
+   "porta_malas_l": 520,
+   "nota": 8.4
+  }
+ },
+ {
+  "id": "avatr-11-versao-de-entrada",
+  "marca": "Avatr",
+  "modelo": "11",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 599990,
+  "bateria_kwh_planilha": 116.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "5 lugares",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 497,
+   "potencia_cv": 578,
+   "zero_a_cem_s": 3.9,
+   "recarga_dc_kw": null,
+   "porta_malas_l": null,
+   "nota": 7.4
+  }
+ }
+]

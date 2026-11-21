@@ -1,0 +1,172 @@
+[
+ {
+  "id": "mg-im6-signature-rwd-bateria-de-entrada",
+  "marca": "MG",
+  "modelo": "IM6",
+  "versao": "Signature RWD, bateria de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 368990,
+  "bateria_kwh_planilha": 75.0,
+  "observacao": "Preço inicial; versão topo 100 kWh custa mais"
+ },
+ {
+  "id": "zeekr-7x-premium-rwd",
+  "marca": "Zeekr",
+  "modelo": "7X",
+  "versao": "Premium RWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 378000,
+  "bateria_kwh_planilha": 100.0,
+  "observacao": "Preço inicial; a ficha refere-se à bateria de 100 kWh",
+  "referencia_dados_abertos": {
+   "versao": "Premium RWD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 491,
+   "potencia_cv": 421,
+   "zero_a_cem_s": 6,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 616,
+   "nota": 8
+  }
+ },
+ {
+  "id": "kia-ev5-land-2wd",
+  "marca": "Kia",
+  "modelo": "EV5",
+  "versao": "Land 2WD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 389990,
+  "bateria_kwh_planilha": 88.16,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "Land 2WD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 402,
+   "potencia_cv": 217.5,
+   "zero_a_cem_s": 8.9,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 513,
+   "nota": 7.7
+  }
+ },
+ {
+  "id": "mini-countryman-se-top-all4",
+  "marca": "MINI",
+  "modelo": "Countryman",
+  "versao": "SE Top ALL4",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 409990,
+  "bateria_kwh_planilha": 66.45,
+  "observacao": "Preço de tabela; capacidade nominal"
+ },
+ {
+  "id": "hyundai-ioniq-5-signature-awd",
+  "marca": "Hyundai",
+  "modelo": "Ioniq 5",
+  "versao": "Signature AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 409990,
+  "bateria_kwh_planilha": 84.0,
+  "observacao": "Preço de tabela; bateria nominal",
+  "referencia_dados_abertos": {
+   "versao": "Signature AWD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 374,
+   "potencia_cv": 325,
+   "zero_a_cem_s": 5.3,
+   "recarga_dc_kw": null,
+   "porta_malas_l": null,
+   "nota": 8.2
+  }
+ },
+ {
+  "id": "toyota-bz4x-awd",
+  "marca": "Toyota",
+  "modelo": "bZ4X",
+  "versao": "AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 419990,
+  "bateria_kwh_planilha": 73.1,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "BEV AWD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 361,
+   "potencia_cv": 343,
+   "zero_a_cem_s": null,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 452,
+   "nota": 7.5
+  }
+ },
+ {
+  "id": "byd-tan-ev-awd",
+  "marca": "BYD",
+  "modelo": "Tan",
+  "versao": "EV AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 426800,
+  "bateria_kwh_planilha": 108.8,
+  "observacao": "Preço de tabela"
+ },
+ {
+  "id": "ford-mustang-mach-e-gt-performance-eawd",
+  "marca": "Ford",
+  "modelo": "Mustang Mach-E",
+  "versao": "GT Performance eAWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 449000,
+  "bateria_kwh_planilha": 91.0,
+  "observacao": "Preço de referência",
+  "referencia_dados_abertos": {
+   "versao": "GT Performance",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 379,
+   "potencia_cv": 487,
+   "zero_a_cem_s": 3.7,
+   "recarga_dc_kw": 150,
+   "porta_malas_l": 402,
+   "nota": 7.6
+  }
+ },
+ {
+  "id": "bmw-ix1-xdrive30-m-sport",
+  "marca": "BMW",
+  "modelo": "iX1",
+  "versao": "xDrive30 M Sport",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 485950,
+  "bateria_kwh_planilha": 64.7,
+  "observacao": "Preço inicial publicado",
+  "referencia_dados_abertos": {
+   "versao": "xDrive30 M Sport",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 324,
+   "potencia_cv": 313,
+   "zero_a_cem_s": 5.6,
+   "recarga_dc_kw": 130,
+   "porta_malas_l": 420,
+   "nota": 7.6
+  }
+ },
+ {
+  "id": "zeekr-001-premium-flagship-bateria-de-referencia",
+  "marca": "Zeekr",
+  "modelo": "001",
+  "versao": "Premium / Flagship, bateria de referência",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 495000,
+  "bateria_kwh_planilha": 100.0,
+  "observacao": "Preço de referência; parte das cotações pode ser importação independente",
+  "referencia_dados_abertos": {
+   "versao": "Premium AWD",
+   "carroceria": "outro",
+   "autonomia_inmetro_km": 426,
+   "potencia_cv": 544,
+   "zero_a_cem_s": 3.8,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 539,
+   "nota": 7.8
+  }
+ }
+]

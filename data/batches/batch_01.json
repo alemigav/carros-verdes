@@ -1,0 +1,182 @@
+[
+ {
+  "id": "byd-dolphin-mini-gl-30-08-kwh",
+  "marca": "BYD",
+  "modelo": "Dolphin Mini",
+  "versao": "GL — 30,08 kWh",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 118990,
+  "bateria_kwh_planilha": 30.08,
+  "observacao": "Preço de tabela GL; bateria correspondente 30,08 kWh. Campanha de novembro: R$ 109.990 (venda direta). A versão GS usa 38,88 kWh e custa R$ 119.990.",
+  "referencia_dados_abertos": {
+   "versao": "GS",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 280,
+   "potencia_cv": 75,
+   "zero_a_cem_s": null,
+   "recarga_dc_kw": 40,
+   "porta_malas_l": 230,
+   "nota": 8.3
+  }
+ },
+ {
+  "id": "jac-e-js1-versao-unica",
+  "marca": "JAC",
+  "modelo": "E-JS1",
+  "versao": "Versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 119900,
+  "bateria_kwh_planilha": 31.4,
+  "observacao": "Preço anunciado no site; oferta sem prazo claro (tabela citada R$ 132.900)",
+  "referencia_dados_abertos": {
+   "versao": "ficha brasileira 25/26",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 181,
+   "potencia_cv": 62,
+   "zero_a_cem_s": 10.7,
+   "recarga_dc_kw": 20,
+   "porta_malas_l": 121,
+   "nota": 7.2
+  }
+ },
+ {
+  "id": "byd-dolphin-mini-gs-38-88-kwh",
+  "marca": "BYD",
+  "modelo": "Dolphin Mini",
+  "versao": "GS — 38,88 kWh",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 119990,
+  "bateria_kwh_planilha": 38.88,
+  "observacao": "Versão GS; preço de tabela R$ 119.990. É esta versão que corresponde à bateria de 38,8 kWh informada como referência pelo usuário.",
+  "referencia_dados_abertos": {
+   "versao": "GS",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 280,
+   "potencia_cv": 75,
+   "zero_a_cem_s": null,
+   "recarga_dc_kw": 40,
+   "porta_malas_l": 230,
+   "nota": 8.3
+  }
+ },
+ {
+  "id": "geely-ex2-pro-max-usa-bateria-de-mesma-familia",
+  "marca": "Geely",
+  "modelo": "EX2",
+  "versao": "Pro; Max usa bateria de mesma família",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 124600,
+  "bateria_kwh_planilha": 39.4,
+  "observacao": "Preço inicial de tabela",
+  "referencia_dados_abertos": {
+   "versao": "Pro",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 289,
+   "potencia_cv": 116,
+   "zero_a_cem_s": 10.2,
+   "recarga_dc_kw": 70,
+   "porta_malas_l": 375,
+   "nota": 8.4
+  }
+ },
+ {
+  "id": "baic-arcfox-t1-pro-2027-pre-venda-lancamento-novembro",
+  "marca": "BAIC",
+  "modelo": "Arcfox T1",
+  "versao": "Pro 2027; pré-venda/lançamento novembro",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 129900,
+  "bateria_kwh_planilha": 42.3,
+  "observacao": "Preço de pré-venda divulgado em novembro; confirmar faturamento e disponibilidade"
+ },
+ {
+  "id": "mg-mg4-urban-comfort-43-kwh",
+  "marca": "MG",
+  "modelo": "MG4 Urban",
+  "versao": "Comfort 43 kWh",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 134990,
+  "bateria_kwh_planilha": 42.8,
+  "observacao": "Preço tabela de entrada; Luxury 54 kWh custa R$ 154.990 e usa bateria de 53,9 kWh",
+  "referencia_dados_abertos": {
+   "versao": "Comfort 43 kWh",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 299,
+   "potencia_cv": 150,
+   "zero_a_cem_s": 9.6,
+   "recarga_dc_kw": 82,
+   "porta_malas_l": 577,
+   "nota": 8.2
+  }
+ },
+ {
+  "id": "dfm-box-e3-urban",
+  "marca": "DFM",
+  "modelo": "BOX",
+  "versao": "E3 / Urban",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 135900,
+  "bateria_kwh_planilha": 43.89,
+  "observacao": "Preço de lançamento divulgado em outubro; site da concessionária informa preço sob consulta e pré-venda. Ficha local: 43,89 kWh."
+ },
+ {
+  "id": "gac-aion-ut-premium-de-entrada",
+  "marca": "GAC",
+  "modelo": "Aion UT",
+  "versao": "Premium de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 139990,
+  "bateria_kwh_planilha": 44.12,
+  "observacao": "Preço inicial; Elite tem bateria de 60 kWh e preço superior",
+  "referencia_dados_abertos": {
+   "versao": "Elite",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 310,
+   "potencia_cv": 204,
+   "zero_a_cem_s": 7.3,
+   "recarga_dc_kw": 87,
+   "porta_malas_l": 340,
+   "nota": 8
+  }
+ },
+ {
+  "id": "byd-dolphin-gs",
+  "marca": "BYD",
+  "modelo": "Dolphin",
+  "versao": "GS",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 149990,
+  "bateria_kwh_planilha": 44.9,
+  "observacao": "Preço de tabela; oferta Move Brasil R$ 139.990 em novembro, com elegibilidade específica",
+  "referencia_dados_abertos": {
+   "versao": "GS",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 291,
+   "potencia_cv": 95,
+   "zero_a_cem_s": 10.9,
+   "recarga_dc_kw": 60,
+   "porta_malas_l": 250,
+   "nota": 7.8
+  }
+ },
+ {
+  "id": "chevrolet-spark-euv-activ-versao-unica",
+  "marca": "Chevrolet",
+  "modelo": "Spark EUV",
+  "versao": "Activ, versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 152790,
+  "bateria_kwh_planilha": 42.0,
+  "observacao": "Tabela; oferta Black Friday R$ 139.990 até 01/12/2026, branca e estoque limitado",
+  "referencia_dados_abertos": {
+   "versao": "Activ",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 258,
+   "potencia_cv": 102,
+   "zero_a_cem_s": null,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 355,
+   "nota": 7.6
+  }
+ }
+]

@@ -1,0 +1,192 @@
+[
+ {
+  "id": "omoda-e5-elite-2027",
+  "marca": "Omoda",
+  "modelo": "E5",
+  "versao": "Elite 2027",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 159990,
+  "bateria_kwh_planilha": 50.6,
+  "observacao": "Preço regular; lote inicial R$ 149.990",
+  "referencia_dados_abertos": {
+   "versao": "Elite",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 278,
+   "potencia_cv": 210,
+   "zero_a_cem_s": 7.2,
+   "recarga_dc_kw": 110,
+   "porta_malas_l": 372,
+   "nota": 7.8
+  }
+ },
+ {
+  "id": "dfm-vigo-e2-urban-plus-referencia",
+  "marca": "DFM",
+  "modelo": "VIGO",
+  "versao": "E2 / Urban Plus (referência)",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 163900,
+  "bateria_kwh_planilha": 51.87,
+  "observacao": "Preço inicial de lançamento divulgado; E2+ citado a R$ 169.900. Site da concessionária informa preço sob consulta/pré-venda; bateria oficial local: 51,87 kWh."
+ },
+ {
+  "id": "gwm-ora-5-versao-unica",
+  "marca": "GWM",
+  "modelo": "Ora 5",
+  "versao": "Versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 165990,
+  "bateria_kwh_planilha": 58.3,
+  "observacao": "Preço anunciado para reservas 04–16/11; prazo encerrado, sem nova condição confirmada em 17/11",
+  "referencia_dados_abertos": {
+   "versao": null,
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 349,
+   "potencia_cv": 204,
+   "zero_a_cem_s": 7.7,
+   "recarga_dc_kw": 120,
+   "porta_malas_l": 362,
+   "nota": 7.9
+  }
+ },
+ {
+  "id": "gwm-ora-03-bev58",
+  "marca": "GWM",
+  "modelo": "Ora 03",
+  "versao": "BEV58",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 169000,
+  "bateria_kwh_planilha": 58.0,
+  "observacao": "Tabela; oferta à vista R$ 149.000 para reservas até 30/11",
+  "referencia_dados_abertos": {
+   "versao": "BEV58",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 315,
+   "potencia_cv": 171,
+   "zero_a_cem_s": 9,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 228,
+   "nota": 8
+  }
+ },
+ {
+  "id": "mg-mg4-versao-inicial-bateria-64-kwh",
+  "marca": "MG",
+  "modelo": "MG4",
+  "versao": "Versão inicial, bateria 64 kWh",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 169600,
+  "bateria_kwh_planilha": 64.0,
+  "observacao": "Preço inicial do catálogo; outra base registra R$ 184.600",
+  "referencia_dados_abertos": {
+   "versao": "Comfort RWD",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 364,
+   "potencia_cv": 190,
+   "zero_a_cem_s": 7.2,
+   "recarga_dc_kw": 140,
+   "porta_malas_l": 350,
+   "nota": 7.9
+  }
+ },
+ {
+  "id": "gac-aion-es-versao-unica",
+  "marca": "GAC",
+  "modelo": "Aion ES",
+  "versao": "Versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 170990,
+  "bateria_kwh_planilha": 55.2,
+  "observacao": "Preço anunciado; condições comerciais de novembro não confirmadas na página da marca",
+  "referencia_dados_abertos": {
+   "versao": null,
+   "carroceria": "sedan",
+   "autonomia_inmetro_km": 314,
+   "potencia_cv": 136,
+   "zero_a_cem_s": 12,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 453,
+   "nota": 7
+  }
+ },
+ {
+  "id": "gac-aion-y-premium",
+  "marca": "GAC",
+  "modelo": "Aion Y",
+  "versao": "Premium",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 175990,
+  "bateria_kwh_planilha": 63.2,
+  "observacao": "Preço anunciado; confirmar disponibilidade e condições",
+  "referencia_dados_abertos": {
+   "versao": "Premium",
+   "carroceria": "minivan",
+   "autonomia_inmetro_km": 318,
+   "potencia_cv": 204,
+   "zero_a_cem_s": 8.5,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 361,
+   "nota": 7.2
+  }
+ },
+ {
+  "id": "mg-s5-comfort-rwd",
+  "marca": "MG",
+  "modelo": "S5",
+  "versao": "Comfort RWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 179800,
+  "bateria_kwh_planilha": 64.0,
+  "observacao": "Campanha válida 01–30/11/2026; tabela de referência R$ 218.800",
+  "referencia_dados_abertos": {
+   "versao": "Comfort",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 351,
+   "potencia_cv": 205,
+   "zero_a_cem_s": 6.3,
+   "recarga_dc_kw": 150,
+   "porta_malas_l": 453,
+   "nota": 7.6
+  }
+ },
+ {
+  "id": "leapmotor-b10-life-bev",
+  "marca": "Leapmotor",
+  "modelo": "B10",
+  "versao": "Life BEV",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 182990,
+  "bateria_kwh_planilha": 56.2,
+  "observacao": "Preço de referência",
+  "referencia_dados_abertos": {
+   "versao": "Elétrico 56,2 kWh",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 288,
+   "potencia_cv": 218,
+   "zero_a_cem_s": 8,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 405,
+   "nota": 7.9
+  }
+ },
+ {
+  "id": "byd-yuan-pro-versao-de-entrada",
+  "marca": "BYD",
+  "modelo": "Yuan Pro",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 182990,
+  "bateria_kwh_planilha": 45.12,
+  "observacao": "Preço de tabela; campanha com bônus de R$ 10.000 ou taxa zero até 30/11",
+  "referencia_dados_abertos": {
+   "versao": null,
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 250,
+   "potencia_cv": 177,
+   "zero_a_cem_s": 7.9,
+   "recarga_dc_kw": 65,
+   "porta_malas_l": 265,
+   "nota": 8
+  }
+ }
+]

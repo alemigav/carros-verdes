@@ -1,0 +1,192 @@
+[
+ {
+  "id": "byd-yuan-plus-versao-de-entrada",
+  "marca": "BYD",
+  "modelo": "Yuan Plus",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 269990,
+  "bateria_kwh_planilha": 74.88,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "AWD 2027",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 378,
+   "potencia_cv": 449,
+   "zero_a_cem_s": 3.9,
+   "recarga_dc_kw": 205,
+   "porta_malas_l": 490,
+   "nota": 8.1
+  }
+ },
+ {
+  "id": "mini-aceman-aceman-e",
+  "marca": "MINI",
+  "modelo": "Aceman",
+  "versao": "Aceman E",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 275990,
+  "bateria_kwh_planilha": 42.5,
+  "observacao": "Preço inicial; Aceman SE usa bateria de 54,2 kWh",
+  "referencia_dados_abertos": {
+   "versao": "Aceman E",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 253,
+   "potencia_cv": 184,
+   "zero_a_cem_s": 7.6,
+   "recarga_dc_kw": 75,
+   "porta_malas_l": 300,
+   "nota": 7.4
+  }
+ },
+ {
+  "id": "renault-megane-e-tech-ev60",
+  "marca": "Renault",
+  "modelo": "Megane E-Tech",
+  "versao": "EV60",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 279990,
+  "bateria_kwh_planilha": 60.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "EV60",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 337,
+   "potencia_cv": 220,
+   "zero_a_cem_s": 7.4,
+   "recarga_dc_kw": 130,
+   "porta_malas_l": 440,
+   "nota": 7.6
+  }
+ },
+ {
+  "id": "zeekr-x-premium-rwd-linha-x",
+  "marca": "Zeekr",
+  "modelo": "X",
+  "versao": "Premium RWD / linha X",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 298000,
+  "bateria_kwh_planilha": 66.0,
+  "observacao": "Preço inicial de referência",
+  "referencia_dados_abertos": {
+   "versao": "Premium RWD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 332,
+   "potencia_cv": 272,
+   "zero_a_cem_s": 5.6,
+   "recarga_dc_kw": 150,
+   "porta_malas_l": 362,
+   "nota": 7.8
+  }
+ },
+ {
+  "id": "volkswagen-id-4-tracao-traseira-lote-2026",
+  "marca": "Volkswagen",
+  "modelo": "ID.4",
+  "versao": "Tração traseira, lote 2026",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 299990,
+  "bateria_kwh_planilha": 84.0,
+  "observacao": "Preço de tabela / lote 2026",
+  "referencia_dados_abertos": {
+   "versao": "Pro (lote 2026)",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 389,
+   "potencia_cv": 286,
+   "zero_a_cem_s": 6.7,
+   "recarga_dc_kw": 185,
+   "porta_malas_l": 533,
+   "nota": 8
+  }
+ },
+ {
+  "id": "byd-seal-awd",
+  "marca": "BYD",
+  "modelo": "Seal",
+  "versao": "AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 299990,
+  "bateria_kwh_planilha": 82.56,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "AWD",
+   "carroceria": "sedan",
+   "autonomia_inmetro_km": 372,
+   "potencia_cv": 531,
+   "zero_a_cem_s": 3.8,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 400,
+   "nota": 8.2
+  }
+ },
+ {
+  "id": "gac-hyptec-ht-2027",
+  "marca": "GAC",
+  "modelo": "Hyptec HT",
+  "versao": "2027",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 314990,
+  "bateria_kwh_planilha": 83.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "Elite (linha 2027)",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 431,
+   "potencia_cv": 340,
+   "zero_a_cem_s": 5.8,
+   "recarga_dc_kw": 280,
+   "porta_malas_l": 670,
+   "nota": 7.9
+  }
+ },
+ {
+  "id": "byd-sealion-7-awd",
+  "marca": "BYD",
+  "modelo": "Sealion 7",
+  "versao": "AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 339990,
+  "bateria_kwh_planilha": 82.5,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "AWD",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 360,
+   "potencia_cv": 531,
+   "zero_a_cem_s": 4.5,
+   "recarga_dc_kw": 150,
+   "porta_malas_l": 500,
+   "nota": 8
+  }
+ },
+ {
+  "id": "volvo-ec40-single-motor",
+  "marca": "Volvo",
+  "modelo": "EC40",
+  "versao": "Single Motor",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 350116,
+  "bateria_kwh_planilha": 69.0,
+  "observacao": "Preço inicial publicado"
+ },
+ {
+  "id": "volvo-ex40-single-motor",
+  "marca": "Volvo",
+  "modelo": "EX40",
+  "versao": "Single Motor",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 351950,
+  "bateria_kwh_planilha": 69.0,
+  "observacao": "Preço inicial publicado",
+  "referencia_dados_abertos": {
+   "versao": "Plus Single Motor",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 364,
+   "potencia_cv": 238,
+   "zero_a_cem_s": 7.3,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 410,
+   "nota": 7.9
+  }
+ }
+]

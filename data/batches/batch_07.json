@@ -1,0 +1,142 @@
+[
+ {
+  "id": "audi-a6-sportback-e-tron-s-line",
+  "marca": "Audi",
+  "modelo": "A6 Sportback e-tron",
+  "versao": "S line",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 649990,
+  "bateria_kwh_planilha": 100.0,
+  "observacao": "Preço inicial; capacidade nominal"
+ },
+ {
+  "id": "volvo-es90-versao-de-entrada",
+  "marca": "Volvo",
+  "modelo": "ES90",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 659950,
+  "bateria_kwh_planilha": 106.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "Ultra Twin Motor Performance",
+   "carroceria": "sedan",
+   "autonomia_inmetro_km": 524,
+   "potencia_cv": 680,
+   "zero_a_cem_s": 4,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 442,
+   "nota": 8.2
+  }
+ },
+ {
+  "id": "denza-z9-gt-1210ev-awd",
+  "marca": "Denza",
+  "modelo": "Z9 GT",
+  "versao": "1210EV AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 670000,
+  "bateria_kwh_planilha": 122.4,
+  "observacao": "Preço de referência",
+  "referencia_dados_abertos": {
+   "versao": "EV AWD (1210EV, três motores)",
+   "carroceria": "cupe",
+   "autonomia_inmetro_km": 476,
+   "potencia_cv": null,
+   "zero_a_cem_s": 2.7,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 495,
+   "nota": 7.6
+  }
+ },
+ {
+  "id": "porsche-macan-electric-macan-4-electric",
+  "marca": "Porsche",
+  "modelo": "Macan Electric",
+  "versao": "Macan 4 Electric",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 690000,
+  "bateria_kwh_planilha": 100.0,
+  "observacao": "Preço inicial publicado",
+  "referencia_dados_abertos": {
+   "versao": "Macan 4",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 443,
+   "potencia_cv": 408,
+   "zero_a_cem_s": 5.2,
+   "recarga_dc_kw": 270,
+   "porta_malas_l": 540,
+   "nota": 8.1
+  }
+ },
+ {
+  "id": "kia-ev9-gtl-awd",
+  "marca": "Kia",
+  "modelo": "EV9",
+  "versao": "GTL AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 749990,
+  "bateria_kwh_planilha": 99.8,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "GTL AWD 7 lugares",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 434,
+   "potencia_cv": 385,
+   "zero_a_cem_s": 5.3,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 333,
+   "nota": 7.8
+  }
+ },
+ {
+  "id": "volvo-ex90-versao-de-entrada",
+  "marca": "Volvo",
+  "modelo": "EX90",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 790020,
+  "bateria_kwh_planilha": 111.0,
+  "observacao": "Preço de tabela; bateria nominal 111 kWh"
+ },
+ {
+  "id": "audi-sq6-sportback-e-tron-quattro",
+  "marca": "Audi",
+  "modelo": "SQ6 Sportback e-tron",
+  "versao": "Quattro",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 790990,
+  "bateria_kwh_planilha": 100.0,
+  "observacao": "Preço de tabela; 100 kWh brutos"
+ },
+ {
+  "id": "cadillac-lyriq-versao-de-entrada",
+  "marca": "Cadillac",
+  "modelo": "Lyriq",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 820000,
+  "bateria_kwh_planilha": 102.0,
+  "observacao": "Preço de referência; valor do catálogo nacional"
+ },
+ {
+  "id": "porsche-cayenne-electric-versao-de-entrada",
+  "marca": "Porsche",
+  "modelo": "Cayenne Electric",
+  "versao": "Versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 900000,
+  "bateria_kwh_planilha": 113.0,
+  "observacao": "Preço inicial publicado; bateria de referência da nova linha"
+ },
+ {
+  "id": "cadillac-vistiq-awd",
+  "marca": "Cadillac",
+  "modelo": "Vistiq",
+  "versao": "AWD",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 990000,
+  "bateria_kwh_planilha": 102.0,
+  "observacao": "Preço de referência"
+ }
+]

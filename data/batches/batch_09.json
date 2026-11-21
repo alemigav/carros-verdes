@@ -1,0 +1,102 @@
+[
+ {
+  "id": "byd-atto-2-dm-i-flex-gs-atto-2-dm-i-flex-gs",
+  "marca": "BYD",
+  "modelo": "Atto 2 DM-i Flex GS",
+  "versao": "Atto 2 DM-i Flex GS",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 169990,
+  "bateria_kwh_planilha": 18.03,
+  "observacao": "Tabela; bateria maior, autonomia elétrica superior"
+ },
+ {
+  "id": "byd-song-pro-dm-i-flex-gl-song-pro-dm-i-flex-gl",
+  "marca": "BYD",
+  "modelo": "Song Pro DM-i Flex GL",
+  "versao": "Song Pro DM-i Flex GL",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 196990,
+  "bateria_kwh_planilha": 13.1,
+  "observacao": "Tabela; campanha de novembro R$ 176.990 até 30/11/2026"
+ },
+ {
+  "id": "byd-song-pro-dm-i-flex-gs-song-pro-dm-i-flex-gs",
+  "marca": "BYD",
+  "modelo": "Song Pro DM-i Flex GS",
+  "versao": "Song Pro DM-i Flex GS",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 199990,
+  "bateria_kwh_planilha": 18.3,
+  "observacao": "Preço de tabela da versão GS"
+ },
+ {
+  "id": "caoa-changan-cs55-ultra-hybrid-flex-phev-cs55-ultra-hybrid-flex-phev",
+  "marca": "CAOA Changan",
+  "modelo": "CS55 Ultra-Hybrid Flex PHEV",
+  "versao": "CS55 Ultra-Hybrid Flex PHEV",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 189990,
+  "bateria_kwh_planilha": 18.4,
+  "observacao": "Preço divulgado em novembro; versão híbrida plug-in flex"
+ },
+ {
+  "id": "gwm-haval-h6-phev19-flex-haval-h6-phev19-flex",
+  "marca": "GWM",
+  "modelo": "Haval H6 PHEV19 Flex",
+  "versao": "Haval H6 PHEV19 Flex",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 250000,
+  "bateria_kwh_planilha": 19.0,
+  "observacao": "Preço de tabela da linha 2027"
+ },
+ {
+  "id": "gwm-haval-h6-phev35-flex-haval-h6-phev35-flex",
+  "marca": "GWM",
+  "modelo": "Haval H6 PHEV35 Flex",
+  "versao": "Haval H6 PHEV35 Flex",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 290000,
+  "bateria_kwh_planilha": 35.0,
+  "observacao": "Preço de tabela da linha 2027"
+ },
+ {
+  "id": "gwm-haval-h6-gt-flex-haval-h6-gt-flex",
+  "marca": "GWM",
+  "modelo": "Haval H6 GT Flex",
+  "versao": "Haval H6 GT Flex",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 326000,
+  "bateria_kwh_planilha": 35.0,
+  "observacao": "Preço de tabela da linha 2027"
+ },
+ {
+  "id": "gwm-haval-h7-phev-flex-haval-h7-phev-flex",
+  "marca": "GWM",
+  "modelo": "Haval H7 PHEV Flex",
+  "versao": "Haval H7 PHEV Flex",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 261000,
+  "bateria_kwh_planilha": 27.5,
+  "observacao": "Preço de referência publicado em novembro; ficha oficial confirma PHEV Flex e 27,5 kWh"
+ },
+ {
+  "id": "gwm-tank-300-phev-flex-tank-300-phev-flex",
+  "marca": "GWM",
+  "modelo": "Tank 300 PHEV Flex",
+  "versao": "Tank 300 PHEV Flex",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 342000,
+  "bateria_kwh_planilha": 37.11,
+  "observacao": "Preço de tabela; oferta de concessionária pode variar por condição"
+ },
+ {
+  "id": "gwm-tank-400-hi4-t-phev-flex-tank-400-hi4-t-phev-flex",
+  "marca": "GWM",
+  "modelo": "Tank 400 Hi4-T PHEV Flex",
+  "versao": "Tank 400 Hi4-T PHEV Flex",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 389000,
+  "bateria_kwh_planilha": 37.1,
+  "observacao": "Preço oficial em venda desde 12/11/2026; 71 km Inmetro"
+ }
+]

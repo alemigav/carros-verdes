@@ -1,0 +1,132 @@
+[
+ {
+  "id": "porsche-taycan-versao-de-entrada-bateria-performance-plus",
+  "marca": "Porsche",
+  "modelo": "Taycan",
+  "versao": "Versão de entrada / bateria Performance Plus",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 1080000,
+  "bateria_kwh_planilha": 105.0,
+  "observacao": "Preço inicial; bateria bruta 105 kWh da versão atualizada",
+  "referencia_dados_abertos": {
+   "versao": null,
+   "carroceria": "sedan",
+   "autonomia_inmetro_km": null,
+   "potencia_cv": null,
+   "zero_a_cem_s": null,
+   "recarga_dc_kw": null,
+   "porta_malas_l": null,
+   "nota": 7.6
+  }
+ },
+ {
+  "id": "audi-rs-e-tron-gt-performance-ficha-2026",
+  "marca": "Audi",
+  "modelo": "RS e-tron GT",
+  "versao": "Performance, ficha 2026",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 1334990,
+  "bateria_kwh_planilha": 105.0,
+  "observacao": "Preço de tabela; ficha mais recente 105 kWh brutos"
+ },
+ {
+  "id": "bmw-i7-xdrive60",
+  "marca": "BMW",
+  "modelo": "i7",
+  "versao": "xDrive60",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 1373950,
+  "bateria_kwh_planilha": 101.7,
+  "observacao": "Preço de tabela; capacidade bruta"
+ },
+ {
+  "id": "fiat-500e-preco-sob-consulta",
+  "marca": "Fiat",
+  "modelo": "500e",
+  "versao": "Preço sob consulta",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": null,
+  "bateria_kwh_planilha": 42.0,
+  "observacao": "Sem preço público no catálogo de novembro; capacidade de ficha da versão Icon",
+  "referencia_dados_abertos": {
+   "versao": "Icon",
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 227,
+   "potencia_cv": 118,
+   "zero_a_cem_s": 9,
+   "recarga_dc_kw": 85,
+   "porta_malas_l": 185,
+   "nota": 7.3
+  }
+ },
+ {
+  "id": "jac-e-jv7l-preco-sob-consulta-utilitario",
+  "marca": "JAC",
+  "modelo": "E-JV7L",
+  "versao": "Preço sob consulta; utilitário",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": null,
+  "bateria_kwh_planilha": 50.23,
+  "observacao": "Sem preço público; utilitário comercial"
+ },
+ {
+  "id": "jac-ev-hunter-preco-sob-consulta-picape-utilitario",
+  "marca": "JAC",
+  "modelo": "EV Hunter",
+  "versao": "Preço sob consulta; picape/utilitário",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": null,
+  "bateria_kwh_planilha": 88.02,
+  "observacao": "Sem preço público; utilitário comercial"
+ },
+ {
+  "id": "bmw-i5-preco-sob-consulta",
+  "marca": "BMW",
+  "modelo": "i5",
+  "versao": "Preço sob consulta",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": null,
+  "bateria_kwh_planilha": 81.2,
+  "observacao": "Sem preço público no catálogo de novembro"
+ },
+ {
+  "id": "jac-iev330p-preco-sob-consulta-picape-utilitario",
+  "marca": "JAC",
+  "modelo": "iEV330P",
+  "versao": "Preço sob consulta; picape/utilitário",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": null,
+  "bateria_kwh_planilha": 65.3,
+  "observacao": "Sem preço público; utilitário comercial"
+ },
+ {
+  "id": "bmw-ix-preco-sob-consulta",
+  "marca": "BMW",
+  "modelo": "iX",
+  "versao": "Preço sob consulta",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": null,
+  "bateria_kwh_planilha": 111.5,
+  "observacao": "Sem preço público no catálogo de novembro",
+  "referencia_dados_abertos": {
+   "versao": "xDrive50 Sport",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": null,
+   "potencia_cv": 523,
+   "zero_a_cem_s": null,
+   "recarga_dc_kw": 195,
+   "porta_malas_l": 500,
+   "nota": 8
+  }
+ },
+ {
+  "id": "byd-atto-2-dm-i-flex-gl-atto-2-dm-i-flex-gl",
+  "marca": "BYD",
+  "modelo": "Atto 2 DM-i Flex GL",
+  "versao": "Atto 2 DM-i Flex GL",
+  "motorizacao": "PHEV",
+  "preco_brl_planilha": 166660,
+  "bateria_kwh_planilha": 7.85,
+  "observacao": "Tabela; campanha de novembro R$ 149.990 até 30/11/2026"
+ }
+]

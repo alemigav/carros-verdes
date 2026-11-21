@@ -1,0 +1,152 @@
+[
+ {
+  "id": "byd-dolphin-plus-plus",
+  "marca": "BYD",
+  "modelo": "Dolphin Plus",
+  "versao": "Plus",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 184800,
+  "bateria_kwh_planilha": 60.48,
+  "observacao": "Preço de referência",
+  "referencia_dados_abertos": {
+   "versao": null,
+   "carroceria": "hatch",
+   "autonomia_inmetro_km": 330,
+   "potencia_cv": 204,
+   "zero_a_cem_s": 7,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 345,
+   "nota": 8.2
+  }
+ },
+ {
+  "id": "geely-ex5-pro-versao-de-entrada",
+  "marca": "Geely",
+  "modelo": "EX5",
+  "versao": "Pro, versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 197800,
+  "bateria_kwh_planilha": 60.22,
+  "observacao": "Tabela; oferta à vista R$ 197.800 até 30/11",
+  "referencia_dados_abertos": {
+   "versao": "Pro",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 413,
+   "potencia_cv": 218,
+   "zero_a_cem_s": 6.9,
+   "recarga_dc_kw": 100,
+   "porta_malas_l": 461,
+   "nota": 8
+  }
+ },
+ {
+  "id": "leapmotor-c10-bev-design",
+  "marca": "Leapmotor",
+  "modelo": "C10",
+  "versao": "BEV Design",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 214990,
+  "bateria_kwh_planilha": 69.9,
+  "observacao": "Preço de referência; não confundir com C10 REEV"
+ },
+ {
+  "id": "gac-aion-v-elite",
+  "marca": "GAC",
+  "modelo": "Aion V",
+  "versao": "Elite",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 219990,
+  "bateria_kwh_planilha": 75.3,
+  "observacao": "Preço anunciado",
+  "referencia_dados_abertos": {
+   "versao": "Elite",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 389,
+   "potencia_cv": 204,
+   "zero_a_cem_s": 7.9,
+   "recarga_dc_kw": 180,
+   "porta_malas_l": 427,
+   "nota": 8.1
+  }
+ },
+ {
+  "id": "baic-arcfox-t5-max-pre-venda-novembro",
+  "marca": "BAIC",
+  "modelo": "Arcfox T5",
+  "versao": "Max; pré-venda novembro",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 219990,
+  "bateria_kwh_planilha": 64.8,
+  "observacao": "Preço de pré-venda para lote inicial; confirmar condições"
+ },
+ {
+  "id": "chevrolet-captiva-ev-versao-unica",
+  "marca": "Chevrolet",
+  "modelo": "Captiva EV",
+  "versao": "Versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 219990,
+  "bateria_kwh_planilha": 60.0,
+  "observacao": "Preço de tabela",
+  "referencia_dados_abertos": {
+   "versao": "Premier",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 304,
+   "potencia_cv": null,
+   "zero_a_cem_s": 9.9,
+   "recarga_dc_kw": 120,
+   "porta_malas_l": 403,
+   "nota": 7.7
+  }
+ },
+ {
+  "id": "volvo-ex30-single-motor-versao-de-entrada",
+  "marca": "Volvo",
+  "modelo": "EX30",
+  "versao": "Single Motor, versão de entrada",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 249950,
+  "bateria_kwh_planilha": 51.0,
+  "observacao": "Preço de tabela; versões Twin Motor e Cross Country têm bateria de 69 kWh e preços mais altos",
+  "referencia_dados_abertos": {
+   "versao": "Single Motor",
+   "carroceria": "suv",
+   "autonomia_inmetro_km": 250,
+   "potencia_cv": 272,
+   "zero_a_cem_s": 5.7,
+   "recarga_dc_kw": null,
+   "porta_malas_l": 318,
+   "nota": 8.2
+  }
+ },
+ {
+  "id": "jac-e-js4-versao-unica",
+  "marca": "JAC",
+  "modelo": "E-JS4",
+  "versao": "Versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 254900,
+  "bateria_kwh_planilha": 55.1,
+  "observacao": "Preço de referência"
+ },
+ {
+  "id": "jac-e-j7-versao-unica",
+  "marca": "JAC",
+  "modelo": "E-J7",
+  "versao": "Versão única",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 259900,
+  "bateria_kwh_planilha": 50.1,
+  "observacao": "Preço de referência"
+ },
+ {
+  "id": "mini-cooper-cooper-e-3-portas",
+  "marca": "MINI",
+  "modelo": "Cooper",
+  "versao": "Cooper E, 3 portas",
+  "motorizacao": "BEV",
+  "preco_brl_planilha": 264990,
+  "bateria_kwh_planilha": 40.7,
+  "observacao": "Preço inicial; Cooper SE tem bateria de 54,2 kWh"
+ }
+]

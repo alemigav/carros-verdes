@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carros Verdes — every electric and plug-in hybrid in Brazil, one decision</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__lead">
+    <div class="mark">CV<span>·</span>BR</div>
+    <div class="topbar__title">
+      <h1>Carros Verdes</h1>
+      <p id="topbar-meta">Prices 20 Nov 2026 · loading…</p>
+    </div>
+  </div>
+
+  <div class="topbar__controls">
+    <div class="switch" id="dataset-switch" role="tablist" aria-label="Powertrain">
+      <button role="tab" data-mode="BEV" class="is-active" aria-selected="true">100% electric <span id="count-bev"></span></button>
+      <button role="tab" data-mode="PHEV" aria-selected="false">Plug-in flex <span id="count-phev"></span></button>
+    </div>
+    <button class="ghost-btn" id="btn-sidebar" aria-expanded="false">Filters</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <aside class="sidebar" id="sidebar">
+    <section class="panel">
+      <div class="panel__head">
+        <h2>What matters to you</h2>
+        <button class="link-btn" id="reset-weights">Reset</button>
+      </div>
+      <p class="hint">Drag to weight each criterion. The score re-ranks every car in the list.</p>
+      <div class="presets" id="presets">
+        <button data-preset="balanced">Balanced</button>
+        <button data-preset="city">City &amp; budget</button>
+        <button data-preset="road">Road trips</button>
+        <button data-preset="family">Family</button>
+        <button data-preset="loaded">Loaded</button>
+        <button data-preset="fun">Performance</button>
+      </div>
+      <div class="weights" id="weights"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head">
+        <h2>Narrow it down</h2>
+        <button class="link-btn" id="reset-filters">Clear</button>
+      </div>
+
+      <label class="field">
+        <span>Search</span>
+        <input type="search" id="f-search" placeholder="Model, brand or version">
+      </label>
+
+      <div class="field">
+        <span>Price <b id="price-readout"></b></span>
+        <div class="dual-range">
+          <input type="range" id="f-price-min">
+          <input type="range" id="f-price-max">
+        </div>
+      </div>
+
+      <div class="field">
+        <span>Range ≥ <b id="range-readout"></b></span>
+        <input type="range" id="f-range" min="0" max="700" step="50" value="0">
+      </div>
+
+      <div class="field">
+        <span>Battery ≥ <b id="battery-readout"></b></span>
+        <input type="range" id="f-battery" min="0" max="120" step="5" value="0">
+      </div>
+
+      <div class="field">
+        <span>DC charging ≥ <b id="dc-readout"></b></span>
+        <input type="range" id="f-dc" min="0" max="350" step="25" value="0">
+      </div>
+
+      <div class="field">
+        <span>Body</span>
+        <div class="chips" id="f-body"></div>
+      </div>
+
+      <div class="field">
+        <span>Brand</span>
+        <div class="chips chips--scroll" id="f-brand"></div>
+      </div>
+
+      <div class="field">
+        <span>Must have</span>
+        <div class="chips" id="f-must"></div>
+      </div>
+
+      <div class="field">
+        <span>Drivetrain</span>
+        <div class="chips" id="f-traction"></div>
+      </div>
+    </section>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <div class="toolbar__left">
+        <span class="result-count" id="result-count">—</span>
+        <div class="active-chips" id="active-chips"></div>
+      </div>
+      <div class="toolbar__right">
+        <label class="inline-field">
+          <span>Sort</span>
+          <select id="sort">
+            <option value="score">Your score</option>
+            <option value="price">Price ↑</option>
+            <option value="price-desc">Price ↓</option>
+            <option value="range">Range ↓</option>
+            <option value="efficiency">Efficiency ↓</option>
+            <option value="charging">Fast charging ↓</option>
+            <option value="power">Power ↓</option>
+            <option value="space">Space ↓</option>
+            <option value="value">Value vs peers ↓</option>
+            <option value="nota">Editorial rating ↓</option>
+          </select>
+        </label>
+        <button class="ghost-btn" id="btn-export" title="Download the cars currently shown as a spreadsheet">Export CSV</button>
+        <div class="switch switch--small" id="view-switch">
+          <button data-view="cards" class="is-active">Cards</button>
+          <button data-view="table">Table</button>
+          <button data-view="charts">Charts</button>
+          <button data-view="cost">Cost</button>
+        </div>
+      </div>
+    </div>
+
+    <section id="view-cards" class="view is-active"></section>
+    <section id="view-table" class="view"></section>
+    <section id="view-charts" class="view"></section>
+    <section id="view-cost" class="view"></section>
+  </main>
+</div>
+
+<div class="dock" id="dock" hidden>
+  <div class="dock__tray" id="dock-tray"></div>
+  <div class="dock__actions">
+    <button class="ghost-btn" id="dock-clear">Clear</button>
+    <button class="primary-btn" id="dock-compare">Compare <span id="dock-count">0</span></button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="overlay__scrim" data-close></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Details"></div>
+</div>
+
+<footer class="foot">
+  <p>Prices: your spreadsheet of 20 Nov 2026 (table prices and campaigns). Range, power, charging and ratings where flagged come from the cited open dataset (Recarregados, CC BY 4.0) and the manufacturer pages listed per car. Fields left blank were not published by a source we could verify — blank means unknown, not zero.</p>
+</footer>
+
+<script src="views.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

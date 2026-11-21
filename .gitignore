@@ -1,0 +1,5 @@
+.DS_Store
+.mimocode/
+node_modules/
+scheduled_tasks.json
+*.log
