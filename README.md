@@ -14,6 +14,21 @@ cada número ao lado.
 
 ---
 
+## Duas versões
+
+| Versão | Para quem | Endereço |
+| --- | --- | --- |
+| **V3 — simplificada** | quem está comprando o primeiro elétrico e quer uma resposta curta | [`/v3/`](https://alemigav.github.io/carros-verdes/v3/) |
+| **V2 — completa** | quem quer comparar todos os números e filtrar por tudo | raiz do site |
+
+A V3 faz duas perguntas — quanto você pode gastar e como vai usar o carro — e entrega uma
+lista em ordem, com três números grandes por carro (custo por mês, autonomia, porta-malas).
+O detalhe fica em dois botões explícitos: **Entender este carro** (explicação em linguagem
+simples, com comparação com um carro a gasolina) e **Ficha técnica** (especificação completa
+sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre traduzido.
+
+---
+
 ## Telas
 
 | Cartões com veredito do topo da lista | Ficha completa de uma versão |
@@ -26,6 +41,16 @@ cada número ao lado.
 
 <p align="center">
   <img src="docs/screenshots/05-celular.png" width="320" alt="Layout no celular">
+</p>
+
+### V3 — versão simplificada
+
+| Duas perguntas e a hierarquia da decisão | Cartões com custo mensal em destaque |
+| --- | --- |
+| ![V3 topo](docs/screenshots/06-v3-topo.png) | ![V3 cartões](docs/screenshots/07-v3-cartoes.jpg) |
+
+<p align="center">
+  <img src="docs/screenshots/08-v3-explicacao.png" width="640" alt="Explicação em linguagem simples">
 </p>
 
 ## O que a interface faz
@@ -89,6 +114,9 @@ data/features/*.json  pesquisa por carro (aplicada sobre aa_fallback.json)
 data/build_base.py    planilha → cars_base.json
 data/merge.py         base + pesquisa → cars.json
 assets/               marca, ícone social, favicon
+v3/                   protótipo V3: lista simplificada, linguagem simples
+v3/photos/            fotos do Wikimedia Commons (CC) + credits.json
+tools/fetch_photos.py baixa, casa e credita as fotos por modelo
 ```
 
 ## Pipeline de dados
@@ -108,6 +136,10 @@ fonte fica nulo.
 - **Eletrificado** — preços de novembro/2026 (uso editorial, com link):
   https://eletrificado.com/precos-carros-eletricos-novembro-2026/
 - Páginas de especificações de cada fabricante, listadas na ficha de cada versão.
+- **Fotos dos modelos**: Wikimedia Commons, majoritariamente CC BY-SA 4.0, com autor e
+  licença em `v3/photos/credits.json` e no crédito de cada imagem. São ilustrativas do
+  modelo, não necessariamente da versão vendida no Brasil. Modelos sem foto licenciada
+  usam uma ilustração do tipo de carro.
 
 ## Licença
 

@@ -1,0 +1,389 @@
+/* Carros Verdes — V3: leitura fácil para quem está comprando o primeiro carro eletrificado. */
+
+:root {
+  --bg: #f6f5f0;
+  --surface: #fffefb;
+  --surface-2: #efeee6;
+  --ink: #14130d;
+  --ink-2: #3a382f;
+  --muted: #6b6860;
+  --line: #dcd8ca;
+  --accent: #0d6b57;
+  --accent-dark: #0a4d3f;
+  --accent-soft: #dcefe8;
+  --warn: #8a4a12;
+  --radius: 18px;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { margin: 0; letter-spacing: -.02em; line-height: 1.2; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent-dark); }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--ink); color: #fff; padding: 14px 20px; border-radius: 0 0 12px 0;
+  font-size: 17px; text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- topo ---------- */
+
+.site {
+  background: rgba(246, 245, 240, .95);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 40;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.site__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+.brand svg { display: block; border-radius: 50%; flex: none; }
+.brand__text { display: grid; }
+.brand__name { font-size: 26px; font-weight: 700; letter-spacing: -.035em; line-height: 1.1; }
+.brand__name em { font-style: normal; color: var(--accent); }
+.brand__tag { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- botões ---------- */
+
+.btn {
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  min-height: 52px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: #fffefb;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+.btn--quiet {
+  background: var(--surface);
+  color: var(--accent-dark);
+  border-color: var(--line);
+}
+.btn--quiet:hover { background: var(--accent-soft); border-color: var(--accent); }
+
+.btn--wide { width: 100%; margin-top: 18px; }
+
+/* ---------- intro ---------- */
+
+main { max-width: 1040px; margin: 0 auto; padding: 32px 24px 60px; }
+
+.intro h1 { font-size: 40px; max-width: 20ch; }
+.intro p { margin-top: 14px; font-size: 19px; color: var(--ink-2); max-width: 62ch; }
+
+/* ---------- escolhas ---------- */
+
+.chooser {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.chooser__group h2 { font-size: 20px; margin-bottom: 12px; }
+
+.pills { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.pills button {
+  font: inherit;
+  font-size: 16.5px;
+  font-weight: 550;
+  min-height: 52px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.pills button:hover { border-color: var(--accent); color: var(--accent-dark); }
+.pills button.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fffefb;
+  font-weight: 650;
+}
+
+/* ---------- o que pesa ---------- */
+
+.why {
+  margin-top: 34px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+}
+.why h2 { font-size: 22px; }
+.why__list {
+  list-style: none;
+  counter-reset: why;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+}
+.why__list li { counter-increment: why; }
+.why__list li::before {
+  content: counter(why);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.why__list b { display: block; font-size: 18.5px; }
+.why__list span { display: block; margin-top: 4px; font-size: 16px; color: var(--ink-2); }
+.why__note { margin-top: 16px; font-size: 15.5px; color: var(--muted); }
+
+/* ---------- lista ---------- */
+
+.results { margin-top: 40px; }
+.results__head h2 { font-size: 28px; }
+.results__note { margin-top: 8px; font-size: 16.5px; color: var(--muted); }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.car {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.car__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-2);
+}
+.car__media img,
+.car__media svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.car__credit {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 6px 10px;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: #fff;
+  background: rgba(20, 19, 13, .62);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.car__credit span { color: rgba(255, 255, 255, .82); }
+
+.car__credit--plain {
+  background: rgba(239, 238, 230, .92);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  font-size: 11.5px;
+}
+
+.car__body { padding: 20px 22px 22px; }
+
+.car__rank {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.car__name { font-size: 27px; margin-top: 2px; }
+.car__version { font-size: 15.5px; color: var(--muted); margin-top: 2px; }
+
+.car__price { margin-top: 12px; font-size: 19px; color: var(--ink-2); }
+.car__month { margin-top: 2px; font-size: 17px; color: var(--ink-2); }
+.car__hint { margin-top: 4px; font-size: 14.5px; color: var(--muted); }
+
+.car__month strong { font-size: 30px; font-weight: 700; letter-spacing: -.03em; color: var(--accent-dark); }
+
+.car__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 16px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.car__facts b { display: block; font-size: 22px; font-weight: 700; letter-spacing: -.02em; }
+.car__facts span { display: block; font-size: 14.5px; color: var(--muted); line-height: 1.35; }
+
+.car__why {
+  margin-top: 16px;
+  padding: 11px 14px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 16.5px;
+  color: var(--accent-dark);
+}
+
+.car__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+.results__all { margin-top: 22px; font-size: 16.5px; color: var(--muted); }
+
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  font-size: 17px;
+}
+
+/* ---------- ficha (overlay) ---------- */
+
+.overlay { position: fixed; inset: 0; z-index: 60; display: grid; }
+.overlay__scrim { position: absolute; inset: 0; background: rgba(20, 19, 13, .5); }
+
+.sheet {
+  position: relative;
+  margin: auto;
+  width: min(720px, calc(100vw - 32px));
+  max-height: 88vh;
+  overflow: auto;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .6);
+  animation: rise .18s ease-out;
+}
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.sheet__head {
+  position: sticky; top: 0; z-index: 2;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  padding: 20px 24px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.sheet__head h2 { font-size: 26px; }
+.sheet__head p { margin-top: 4px; font-size: 16px; color: var(--muted); }
+
+.sheet__close {
+  flex: none;
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  font-size: 20px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.sheet__body { padding: 20px 24px 28px; }
+
+.block + .block { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+.block h3 { font-size: 20px; }
+.block p { margin-top: 8px; font-size: 17px; color: var(--ink-2); max-width: 60ch; }
+.block ul { margin: 10px 0 0; padding-left: 22px; font-size: 17px; color: var(--ink-2); max-width: 60ch; }
+.block li + li { margin-top: 6px; }
+.big { font-size: 26px; font-weight: 700; color: var(--accent-dark); letter-spacing: -.02em; }
+
+.specs { width: 100%; border-collapse: collapse; font-size: 16.5px; }
+.specs caption {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0 0 10px;
+}
+.specs th, .specs td { text-align: left; padding: 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.specs th { font-weight: 500; color: var(--ink-2); width: 58%; }
+.specs td { font-weight: 600; }
+.specs td.is-empty { color: var(--muted); font-weight: 500; }
+.specs tbody tr:last-child th, .specs tbody tr:last-child td { border-bottom: 0; }
+.specs .group th {
+  padding-top: 18px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* ---------- rodapé ---------- */
+
+.foot {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px 56px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.foot p + p { margin-top: 10px; }
+.foot__legal { color: var(--ink-2); }
+
+/* ---------- telas menores ---------- */
+
+@media (max-width: 860px) {
+  .intro h1 { font-size: 32px; }
+  .chooser { grid-template-columns: 1fr; gap: 18px; }
+  .why__list { grid-template-columns: 1fr; gap: 16px; }
+  .list { grid-template-columns: 1fr; }
+  .car__facts { gap: 10px; }
+  .car__facts b { font-size: 19px; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 17px; }
+  .site__inner { padding: 12px 16px; }
+  .brand__name { font-size: 22px; }
+  .brand svg { width: 44px; height: 44px; }
+  main { padding: 24px 16px 48px; }
+  .intro h1 { font-size: 27px; }
+  .intro p { font-size: 17.5px; }
+  .why { padding: 20px; }
+  .car__body { padding: 18px; }
+  .car__name { font-size: 23px; }
+  .car__hint { margin-top: 4px; font-size: 14.5px; color: var(--muted); }
+
+.car__month strong { font-size: 26px; }
+  .car__actions .btn { flex: 1 1 100%; }
+  .foot { padding: 0 16px 44px; }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carros Verdes — qual elétrico faz sentido para você</title>
+<meta name="description" content="Escolha seu carro elétrico sem complicação: responda duas perguntas e veja os carros em ordem, com custo por mês, autonomia e tempo de recarga explicados em português claro.">
+<meta name="author" content="Alexandre Michel Gavronski">
+<meta name="copyright" content="© 2026 Alexandre Michel Gavronski. Todos os direitos reservados.">
+<meta name="theme-color" content="#0d6b57">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#resultados">Ir para a lista de carros</a>
+
+<header class="site">
+  <div class="site__inner">
+    <a class="brand" href="../" aria-label="Carros Verdes">
+      <svg viewBox="0 0 48 48" width="52" height="52" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="v3-g" x1="0.15" y1="0" x2="0.85" y2="1">
+            <stop offset="0" stop-color="#149073"/>
+            <stop offset="1" stop-color="#0a4d3f"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="23" fill="url(#v3-g)"/>
+        <path d="M25.2 5.6C35.4 13.4 35.9 27.2 23.1 42.4 11.6 27.4 12.6 13.6 25.2 5.6Z" fill="#f7f6f0"/>
+        <path d="M24.9 13.4 15.4 24.7H23.9L22.9 32.4 32.6 21.1H24L24.9 13.4Z" fill="#0d6b57"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">Carros <em>Verdes</em></span>
+        <span class="brand__tag">escolha sem complicação</span>
+      </span>
+    </a>
+    <button class="btn btn--quiet" id="restart">Recomeçar</button>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <h1>Qual carro elétrico faz sentido para você?</h1>
+    <p>Responda duas perguntas rápidas. A lista se reorganiza na hora, e os primeiros são os que mais combinam com o seu uso e o seu bolso.</p>
+  </section>
+
+  <section class="chooser" aria-label="Suas preferências">
+    <div class="chooser__group">
+      <h2>Quanto você pode gastar no carro?</h2>
+      <div class="pills" id="f-budget" role="group" aria-label="Faixa de preço">
+        <button data-budget="150000" aria-pressed="false">Até R$ 150 mil</button>
+        <button data-budget="250000" aria-pressed="false">Até R$ 250 mil</button>
+        <button data-budget="400000" aria-pressed="false">Até R$ 400 mil</button>
+        <button data-budget="any" aria-pressed="true" class="is-on">Qualquer preço</button>
+      </div>
+    </div>
+
+    <div class="chooser__group">
+      <h2>Como você vai usar o carro?</h2>
+      <div class="pills" id="f-use" role="group" aria-label="Como vai usar o carro">
+        <button data-use="city" aria-pressed="false">Cidade e trajetos curtos</button>
+        <button data-use="mixed" aria-pressed="true" class="is-on">Um pouco de tudo</button>
+        <button data-use="road" aria-pressed="false">Viajo muito</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" aria-labelledby="why-title">
+    <h2 id="why-title">O que mais pesa nesta decisão</h2>
+    <ol class="why__list">
+      <li>
+        <b>Preço do carro</b>
+        <span>Quanto custa comprar. É o primeiro filtro de qualquer decisão.</span>
+      </li>
+      <li>
+        <b>Custo por quilômetro</b>
+        <span>Quanto você gasta de energia para rodar 1 km. Aqui supomos que 80% da carga é feita em casa, a R$ 0,95 o kWh.</span>
+      </li>
+      <li>
+        <b>Autonomia</b>
+        <span>Quantos quilômetros o carro anda com a bateria cheia, pelo padrão Inmetro.</span>
+      </li>
+      <li>
+        <b>Recarga rápida</b>
+        <span>Quanto tempo ele leva para ir de 10% a 80% num carregador de estrada.</span>
+      </li>
+    </ol>
+    <p class="why__note">Espaço entra depois, com menos peso. Nenhum outro número é necessário para começar.</p>
+  </section>
+
+  <section class="results" id="resultados" aria-labelledby="results-title">
+    <div class="results__head">
+      <h2 id="results-title">Carros em ordem para você</h2>
+      <p class="results__note" id="results-note">Carregando…</p>
+    </div>
+    <div class="list" id="list"></div>
+    <button class="btn btn--wide" id="more" hidden>Ver mais carros</button>
+    <p class="results__all">Prefere ver todos os números lado a lado? <a href="../">Abrir o comparador completo</a>.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><b>Carros Verdes</b> — versão simplificada (protótipo V3).</p>
+  <p>Preços de tabela de 20/11/2026; autonomia, recarga e equipamentos do conjunto aberto Recarregados (CC BY 4.0) e das páginas de cada fabricante. Quando um dado não foi publicado por uma fonte verificável, escrevemos “não publicado” — não é zero.</p>
+  <p>Fotos: Wikimedia Commons, sob licença indicada em cada imagem (a maioria CC BY-SA 4.0), apenas ilustrativas do modelo. Onde não há foto licenciada, mostramos uma ilustração do tipo de carro.</p>
+  <p class="foot__legal">© 2026 Alexandre Michel Gavronski. Todos os direitos reservados. Aplicativo de uso reservado, não é software livre — ver <a href="../LICENSE">LICENSE</a>.</p>
+</footer>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="overlay__scrim" data-close></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
