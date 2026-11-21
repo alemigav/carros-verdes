@@ -14,6 +14,20 @@ cada número ao lado.
 
 ---
 
+## Telas
+
+| Cartões com veredito do topo da lista | Ficha completa de uma versão |
+| --- | --- |
+| ![Cartões](docs/screenshots/01-cartoes.png) | ![Ficha da versão](docs/screenshots/02-ficha.png) |
+
+| Comparação lado a lado, com o melhor valor de cada linha | Preço × autonomia |
+| --- | --- |
+| ![Comparação](docs/screenshots/03-comparacao.png) | ![Gráficos](docs/screenshots/04-graficos.png) |
+
+<p align="center">
+  <img src="docs/screenshots/05-celular.png" width="320" alt="Layout no celular">
+</p>
+
 ## O que a interface faz
 
 - **90 versões** no total — 79 elétricos e 11 híbridos plug-in flex, com preço de 20/11/2026.
@@ -29,9 +43,12 @@ cada número ao lado.
   com parâmetros de uso editáveis.
 - **Comparação lado a lado** de até quatro versões, com destaque do melhor valor de
   cada linha.
-- **Ficha completa** por versão, em oito blocos (preço, bateria, recarga, motorização,
-  dimensões, segurança, conforto, garantia), com fontes, observações e indicador de
-  confiança dos dados.
+- **Ficha completa** por versão, em nove blocos (preço, **custo de rodagem**, bateria,
+  recarga, motorização, dimensões, segurança, conforto, garantia), com fontes,
+  observações e indicador de confiança dos dados.
+- **Preço e custo separados**: "preço ÷ autonomia" mede quanto do valor do carro compra
+  cada km de alcance; o gasto real de rodar aparece como R$/km, R$/100 km, R$/mês e
+  R$/ano, com as premissas de uso à vista.
 - **Exportação CSV** do recorte atual, com BOM e separador `;` para abrir direto no
   Excel em português.
 - Campos sem fonte verificável ficam **em branco**, não em zero; cada carro informa

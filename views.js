@@ -152,7 +152,7 @@ function renderCards(input) {
       const monthly = annualCost(car) == null ? null : annualCost(car) / 12;
       const running = per100 == null
         ? ''
-        : `<div class="card__note" title="Energia (e combustível, nos híbridos plug-in flex) mais manutenção">Rodar ≈ ${money2(per100)}/100 km · ${money(monthly)}/mês a ${n0(state.cost.kmYear)} km/ano</div>`;
+        : `<div class="card__note" title="Energia (e combustível, nos plug-in flex) mais manutenção, com as premissas da aba Custos">Rodar ≈ ${money2(per100 / 100)}/km · ${money(monthly)}/mês a ${n0(state.cost.kmYear)} km/ano</div>`;
 
       return `<article class="card ${selected.has(car.id) ? 'is-selected' : ''}" data-id="${car.id}">
         <div class="card__top">
@@ -437,8 +437,8 @@ ${money(car.preco_brl)} · ${n0(car.autonomia_referencia_km)} km · nota ${Math.
       ${legend}
     </div>
     <div class="chart-card">
-      <h3>Quilômetros de autonomia mais baratos</h3>
-      <p class="sub">Preço dividido pela autonomia certificada — quanto do valor de tabela está comprando distância.</p>
+      <h3>Preço ÷ autonomia: km de alcance mais barato</h3>
+      <p class="sub">Preço de tabela dividido pela autonomia certificada — quanto do valor do carro compra distância. É indicador de preço, não o custo de rodar (esse fica na aba Custos).</p>
       <div class="bars">${barsPerKm || '<p class="sub">Nenhum carro com preço e autonomia ao mesmo tempo.</p>'}</div>
     </div>
     <div class="chart-card">

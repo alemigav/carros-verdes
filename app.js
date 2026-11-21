@@ -648,10 +648,25 @@ function openDetail(id) {
         kv('Preço de tabela', money(car.preco_brl)),
         kv('Por kWh', car.preco_kwh ? money(car.preco_kwh) : null),
         kv('Índice vs. referência', car.indice_vs_base ? car.indice_vs_base.toFixed(2) : null, '× R$ 3.067/kWh'),
-        kv('Preço por km de autonomia', car.preco_por_km_autonomia ? money2(car.preco_por_km_autonomia) : null),
+        kv('Preço ÷ autonomia', car.preco_por_km_autonomia ? money2(car.preco_por_km_autonomia) : null),
         kv('Preço por cv', car.preco_por_cv ? money(car.preco_por_cv) : null),
         kv('vs. carros parecidos', ratioText, ratioExplain),
       ],
+      note: 'Preço ÷ autonomia é o preço de tabela dividido pela autonomia certificada: quanto do valor do carro "compra" cada km de alcance. É um indicador de preço, não o custo de rodar — esse fica em Custo de rodagem.',
+    },
+    {
+      title: 'Custo de rodagem (estimado)',
+      items: [
+        kv('Por km rodado', cost100(car) == null ? null : money2(cost100(car) / 100)),
+        kv('Por 100 km', cost100(car) == null ? null : money2(cost100(car))),
+        kv('Por mês', annualCost(car) == null ? null : money(annualCost(car) / 12)),
+        kv('Por ano', annualCost(car) == null ? null : money(annualCost(car))),
+      ],
+      note: `Estimativa com ${state.cost.homeShare}% da carga em casa a ${money2(state.cost.homePrice)}/kWh e o restante em recarga pública a ${money2(state.cost.publicPrice)}/kWh`
+        + (isPhev ? `, ${state.cost.electricShare}% dos km no modo elétrico e combustível a ${money2(state.cost.fuelPrice)}/L` : '')
+        + `, ${n0(state.cost.kmYear)} km por ano e ${money(state.cost.maintenance)}/ano de manutenção e pneus.`
+        + ' Fora da conta: seguro, depreciação, pedágios e instalação do carregador.',
+      action: 'Ajustar premissas em Custos',
     },
     {
       title: isPhev ? 'Bateria e autonomia elétrica' : 'Bateria e autonomia',
@@ -798,7 +813,10 @@ function openDetail(id) {
       ${groups
         .map(
           (g) => `<section class="spec-section"><h4>${g.title}</h4>
-            <div class="kv-grid">${g.items.join('')}</div></section>`,
+            <div class="kv-grid">${g.items.join('')}</div>
+            ${g.note ? `<p class="hint" style="margin:10px 0 0">${g.note}</p>` : ''}
+            ${g.action ? `<button class="ghost-btn" data-cost-link style="margin-top:10px">${g.action}</button>` : ''}
+          </section>`,
         )
         .join('')}
       ${car.alerta_versao ? `<div class="notes" style="background:#f8ecdf"><b>Atenção à versão</b>${car.alerta_versao}</div>` : ''}
@@ -821,6 +839,12 @@ function openDetail(id) {
     btn.addEventListener('click', () => {
       selectCar(btn.dataset.add);
       closeSheet();
+    });
+  });
+  sheet.querySelectorAll('[data-cost-link]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      closeSheet();
+      setView('cost');
     });
   });
 }
@@ -849,8 +873,12 @@ function openCompare() {
     { group: 'Preço' },
     { label: 'Preço de tabela', get: (c) => c.preco_brl, fmt: (v) => money(v), better: 'low' },
     { label: 'Por kWh', get: (c) => c.preco_kwh, fmt: (v) => money(v), better: 'low' },
-    { label: 'Preço por km de autonomia', get: (c) => c.preco_por_km_autonomia, fmt: (v) => money2(v), better: 'low' },
+    { label: 'Preço ÷ autonomia', get: (c) => c.preco_por_km_autonomia, fmt: (v) => money2(v), better: 'low' },
     { label: 'vs. carros parecidos', get: (c) => state.scores.get(c.id)?.valueRatio, fmt: (v) => `${v > 1 ? '+' : '−'}${Math.abs((v - 1) * 100).toFixed(0)}%`, better: 'low' },
+    { group: 'Custo de rodagem (estimado)' },
+    { label: 'Por km rodado', get: (c) => cost100(c), fmt: (v) => money2(v / 100), better: 'low' },
+    { label: 'Por 100 km', get: (c) => cost100(c), fmt: (v) => money2(v), better: 'low' },
+    { label: 'Por mês', get: (c) => annualCost(c), fmt: (v) => money(v / 12), better: 'low' },
     { group: 'Bateria e autonomia' },
     { label: 'Bateria (nominal)', get: (c) => c.bateria_kwh, fmt: (v) => `${kwh(v)} kWh`, better: 'high' },
     { label: 'Química', get: (c) => c.quimica_bateria },
