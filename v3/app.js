@@ -159,6 +159,38 @@ function placeholderSvg(carroceria) {
 
 /* ---------- textos ---------- */
 
+const VERSION_FEATURES = {
+  camera_360: 'câmera 360°',
+  carregador_sem_fio: 'carregador por indução',
+  banco_eletrico: 'banco elétrico',
+  bancos_aquecidos: 'bancos e volante aquecidos',
+  teto_panoramico: 'teto solar',
+  v2l: 'tomada V2L',
+};
+
+function siblingsOf(car) {
+  return state.cars
+    .filter((c) => c.marca === car.marca && c.modelo === car.modelo && c.id !== car.id)
+    .sort((a, b) => (a.preco_brl || 0) - (b.preco_brl || 0));
+}
+
+function versionDiffText(current, other) {
+  const bits = [];
+  const dPrice = (other.preco_brl || 0) - (current.preco_brl || 0);
+  if (dPrice > 0) bits.push(`${money(dPrice)} mais caro`);
+  else if (dPrice < 0) bits.push(`${money(Math.abs(dPrice))} mais barato`);
+
+  const dRange = (other.autonomia_referencia_km || 0) - (current.autonomia_referencia_km || 0);
+  if (Math.abs(dRange) >= 5) bits.push(dRange > 0 ? `${n0(dRange)} km a mais de autonomia` : `${n0(Math.abs(dRange))} km a menos de autonomia`);
+
+  const gains = Object.entries(VERSION_FEATURES)
+    .filter(([key]) => current[key] !== other[key] && other[key] === true)
+    .map(([, label]) => label);
+  if (gains.length) bits.push(`ganha ${gains.slice(0, 2).join(' e ')}`);
+
+  return bits.length ? bits.join('; ') : 'mesma ficha técnica';
+}
+
 function rangePhrase(km) {
   if (km == null) return 'Não temos a autonomia publicada para esta versão.';
   if (km < 250) return 'Dá para o dia a dia na cidade, com recarga durante a semana. Viagens longas vão exigir mais paradas.';
@@ -191,10 +223,12 @@ function warrantyText(car) {
 
 /* ---------- lista ---------- */
 
-function carCard(entry, index) {
+function carCard(entry, index, versions) {
   const car = entry.car;
   const photo = photoFor(car);
   const monthly = monthTotal(car);
+  const others = versions && versions.length > 1 ? versions : null;
+  const minPrice = others ? Math.min(...others.map((v) => v.car.preco_brl).filter((p) => p != null)) : car.preco_brl;
   const km = car.autonomia_referencia_km;
   const dcText = car.recarga_dc_10_80_min ? `${n0(car.recarga_dc_10_80_min)} min` : '—';
   const dcLabel = car.recarga_dc_10_80_min ? 'recarga rápida (10% a 80%)' : 'tempo de recarga não publicado';
@@ -211,6 +245,10 @@ function carCard(entry, index) {
       <p class="car__rank">${index + 1}º para você</p>
       <h3 class="car__name">${car.marca} ${car.modelo}</h3>
       <p class="car__version">${car.versao || car.versao_pesquisada || ''}</p>
+      ${others ? `<p class="car__versions">${others.length} versões, a partir de ${money(minPrice)}: ${[...others]
+        .sort((a, b) => (a.car.preco_brl || 0) - (b.car.preco_brl || 0))
+        .map((v) => v.car.versao || v.car.versao_pesquisada)
+        .join(' · ')}</p>` : ''}
       <p class="car__price">${money(car.preco_brl)} à vista</p>
       <p class="car__month"><strong>${money(monthly)}</strong> por mês rodando ${n0(COST.kmYear)} km/ano</p>
       <p class="car__hint">Esse valor é energia mais manutenção. Não inclui seguro nem as parcelas do carro.</p>
@@ -240,13 +278,24 @@ function renderResults() {
     return;
   }
 
-  const total = state.ranked.length;
-  const visible = state.ranked.slice(0, state.shown);
+  const byModel = new Map();
+  state.ranked.forEach((entry) => {
+    const key = `${entry.car.marca} ${entry.car.modelo}`;
+    if (!byModel.has(key)) byModel.set(key, []);
+    byModel.get(key).push(entry);
+  });
+  const models = [...byModel.values()]
+    .map((versions) => ({ entry: versions[0], versions }))
+    .sort((a, b) => b.entry.score - a.entry.score);
 
-  list.innerHTML = visible.map(carCard).join('');
+  const total = models.length;
+  const totalVersions = state.ranked.length;
+  const visible = models.slice(0, state.shown);
+
+  list.innerHTML = visible.map((m, i) => carCard(m.entry, i, m.versions)).join('');
   note.textContent = state.budget === 'any'
-    ? `${total} carros à venda no Brasil, do mais indicado para o seu uso ao menos indicado.`
-    : `${total} carros dentro da sua faixa de preço, do mais indicado para o seu uso ao menos indicado.`;
+    ? `${total} modelos (${totalVersions} versões) à venda no Brasil, do mais indicado para o seu uso ao menos indicado.`
+    : `${total} modelos (${totalVersions} versões) dentro da sua faixa de preço, do mais indicado para o seu uso ao menos indicado.`;
 
   more.hidden = visible.length >= total;
   more.textContent = `Ver mais carros (${Math.min(12, total - visible.length)} de ${total - visible.length} restantes)`;
@@ -334,6 +383,26 @@ function openUnderstand(id) {
     </section>`,
   ];
 
+  const siblings = siblingsOf(car);
+  if (siblings.length) {
+    blocks.push(`<section class="block">
+      <h3>Outras versões deste modelo</h3>
+      <p>O ${car.modelo} é vendido em ${siblings.length + 1} versões. A diferença é principalmente de equipamento e, em alguns casos, de bateria.</p>
+      <ul class="versions">
+        ${siblings
+          .map(
+            (other) => `<li>
+              <b>${other.versao || other.versao_pesquisada}</b>
+              <span>${money(other.preco_brl)} · ${other.autonomia_referencia_km ? `${n0(other.autonomia_referencia_km)} km` : 'autonomia não publicada'}</span>
+              <em>${versionDiffText(car, other)}</em>
+              <button class="btn btn--quiet btn--small" data-version="${other.id}">Ver esta versão</button>
+            </li>`,
+          )
+          .join('')}
+      </ul>
+    </section>`);
+  }
+
   if (car.observacoes) {
     blocks.push(`<section class="block">
       <h3>Vale saber</h3>
@@ -349,6 +418,10 @@ function openUnderstand(id) {
         <p>Toque em “Ficha técnica” na lista, ou abra o <a href="../">comparador completo</a> para ver todas as versões lado a lado.</p>
       </section>
     </div>`);
+
+  sheet.querySelectorAll('[data-version]').forEach((btn) => {
+    btn.addEventListener('click', () => openUnderstand(btn.dataset.version));
+  });
 }
 
 function openSpecs(id) {

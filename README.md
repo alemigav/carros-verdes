@@ -59,7 +59,7 @@ sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre trad
 
 ## O que a interface faz
 
-- **90 versões** no total — 79 elétricos e 11 híbridos plug-in flex, com preço de 20/11/2026.
+- **92 versões** no total — 81 elétricos e 11 híbridos plug-in flex, com preço de 20/11/2026.
 - **Nota pessoal de 0 a 100**: oito critérios com peso ajustável (custo-benefício,
   autonomia, eficiência, recarga rápida, desempenho, espaço, segurança, conforto).
   Seis presets (Equilibrado, Cidade e economia, Viagens longas, Família, Bem equipado,
@@ -70,6 +70,10 @@ sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre trad
 - **Quatro visões**: cartões com veredito do topo da lista, tabela ordenável, gráficos
   (preço × autonomia, km de autonomia mais baratos, mais eficientes) e custo de rodagem
   com parâmetros de uso editáveis.
+- **Versões do mesmo modelo**: a ficha lista as outras versões com preço, autonomia e o
+  que muda em relação à versão aberta (equipamento, bateria, tempo de recarga), com
+  atalho para comparar todas lado a lado — na comparação entre versões do mesmo carro,
+  só as linhas que mudam aparecem.
 - **Comparação lado a lado** de até quatro versões, com destaque do melhor valor de
   cada linha.
 - **Ficha completa** por versão, em nove blocos (preço, **custo de rodagem**, bateria,
@@ -125,10 +129,12 @@ theme.css             tema compartilhado (cores, vidro, fundo) das três página
 styles.css            layout, componentes e responsivo da V2
 app.js                estado, motor de notas, filtros, fichas, comparação, CSV
 views.js              renderizadores (cartões, tabela, gráficos, custos)
-data/cars.json        base compilada (90 versões)
+data/cars.json        base compilada (92 versões)
 data/features/*.json  pesquisa por carro (aplicada sobre aa_fallback.json)
 data/build_base.py    planilha → cars_base.json
 data/merge.py         base + pesquisa → cars.json
+data/extra_versions.json  versões extras de um mesmo modelo, com fonte
+data/add_versions.py  aplica as versões extras e recalcula os índices
 assets/               marca, ícone social, favicon
 marcas/               mapa de grupos, marcas e joint ventures
 v3/                   protótipo V3: lista simplificada, linguagem simples

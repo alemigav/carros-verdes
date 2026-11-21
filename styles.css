@@ -803,6 +803,33 @@ table.grid .cell-link { border: 0; background: none; padding: 0; text-align: lef
 .conf--media i { background: #c58b16; }
 .conf--baixa i { background: #b45a3c; }
 
+/* versões do mesmo modelo */
+
+.siblings { display: grid; gap: 10px; }
+
+.sibling {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .72);
+}
+.sibling__info { display: grid; gap: 2px; min-width: 0; }
+.sibling__info b { font-size: 14px; font-weight: 650; }
+.sibling__info span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.sibling__info em {
+  font-style: normal; font-size: 11.5px; color: var(--accent-dark);
+  background: var(--accent-soft); border-radius: 6px; padding: 3px 7px; margin-top: 2px;
+  justify-self: start;
+}
+.sibling__actions { display: flex; gap: 8px; flex: none; }
+.sibling__actions .ghost-btn, .sibling__actions .pick { font-size: 12px; padding: 6px 10px; }
+
+@media (max-width: 620px) {
+  .sibling { flex-direction: column; align-items: stretch; }
+  .sibling__actions .ghost-btn, .sibling__actions .pick { flex: 1; }
+}
+
 /* compare */
 
 .cmp-wrap { overflow-x: auto; }

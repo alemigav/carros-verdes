@@ -242,6 +242,8 @@ main { max-width: 1040px; margin: 0 auto; padding: 32px 24px 60px; }
 .car__month { margin-top: 2px; font-size: 17px; color: var(--ink-2); }
 .car__hint { margin-top: 4px; font-size: 14.5px; color: var(--muted); }
 
+.car__versions { margin-top: 6px; font-size: 14.5px; color: var(--muted); }
+
 .car__month strong { font-size: 30px; font-weight: 700; letter-spacing: -.03em; color: var(--accent-dark); }
 
 .car__facts {
@@ -332,6 +334,21 @@ main { max-width: 1040px; margin: 0 auto; padding: 32px 24px 60px; }
 .block li + li { margin-top: 6px; }
 .big { font-size: 26px; font-weight: 700; color: var(--accent-dark); letter-spacing: -.02em; }
 
+.versions { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; max-width: 60ch; }
+.versions li {
+  display: grid; gap: 3px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .72);
+}
+.versions b { font-size: 17px; }
+.versions span { font-size: 15px; color: var(--muted); }
+.versions em { font-style: normal; font-size: 15px; color: var(--accent-dark); }
+.versions .btn--small { justify-self: start; margin-top: 6px; min-height: 44px; padding: 8px 14px; font-size: 15px; }
+
+.btn--small { min-height: 44px; padding: 8px 14px; font-size: 15px; }
+
 .specs { width: 100%; border-collapse: collapse; font-size: 16.5px; }
 .specs caption {
   text-align: left;
@@ -389,6 +406,8 @@ main { max-width: 1040px; margin: 0 auto; padding: 32px 24px 60px; }
   .car__body { padding: 18px; }
   .car__name { font-size: 23px; }
   .car__hint { margin-top: 4px; font-size: 14.5px; color: var(--muted); }
+
+.car__versions { margin-top: 6px; font-size: 14.5px; color: var(--muted); }
 
 .car__month strong { font-size: 26px; }
   .car__actions .btn { flex: 1 1 100%; }

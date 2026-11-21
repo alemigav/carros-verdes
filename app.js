@@ -624,6 +624,50 @@ function kv(label, value, unit = '', missingClass = true) {
   </div>`;
 }
 
+const FEATURE_LABELS = {
+  camera_360: 'câmera 360°',
+  carregador_sem_fio: 'carregador por indução',
+  banco_eletrico: 'banco elétrico',
+  bancos_aquecidos: 'bancos e volante aquecidos',
+  bancos_ventilados: 'bancos ventilados',
+  teto_panoramico: 'teto panorâmico',
+  v2l: 'tomada V2L',
+  acc: 'piloto adaptativo',
+  aeb: 'freagem automática',
+  bsm: 'monitoramento de ponto cego',
+  sensor_estacionamento: 'sensores de estacionamento',
+};
+
+function versionDelta(current, other) {
+  const parts = [];
+  const diffMoney = (other.preco_brl || 0) - (current.preco_brl || 0);
+  if (diffMoney > 0) parts.push(`+ ${money(diffMoney)}`);
+  else if (diffMoney < 0) parts.push(`− ${money(Math.abs(diffMoney))}`);
+
+  const diffRange = (other.autonomia_referencia_km || 0) - (current.autonomia_referencia_km || 0);
+  if (diffRange >= 5) parts.push(`+ ${n0(diffRange)} km de autonomia`);
+  else if (diffRange <= -5) parts.push(`${n0(Math.abs(diffRange))} km menos de autonomia`);
+
+  const diffBattery = (other.bateria_kwh || 0) - (current.bateria_kwh || 0);
+  if (diffBattery >= 1) parts.push(`bateria ${n1(other.bateria_kwh)} kWh`);
+
+  const diffTime = (current.recarga_dc_10_80_min || 0) - (other.recarga_dc_10_80_min || 0);
+  if (diffTime >= 3) parts.push(`${n0(diffTime)} min mais rápida na recarga`);
+  else if (diffTime <= -3) parts.push(`${n0(Math.abs(diffTime))} min mais lenta na recarga`);
+
+  const gains = [];
+  const losses = [];
+  for (const [key, label] of Object.entries(FEATURE_LABELS)) {
+    if (current[key] === other[key]) continue;
+    if (other[key] === true) gains.push(label);
+    if (other[key] === false) losses.push(label);
+  }
+  if (gains.length) parts.push(`ganha ${gains.slice(0, 3).join(', ')}`);
+  if (losses.length) parts.push(`perde ${losses.slice(0, 2).join(', ')}`);
+
+  return parts.length ? parts.join(' · ') : 'mesma ficha técnica desta versão';
+}
+
 function safetyFacts(car) {
   const labels = {
     acc: 'piloto adaptativo', aeb: 'freagem automática', lka: 'centralização de faixa',
@@ -839,6 +883,33 @@ function openDetail(id) {
             </section>`;
           })()
         : ''}
+      ${(() => {
+        const siblings = state.cars.filter((c) => c.marca === car.marca && c.modelo === car.modelo && c.id !== car.id);
+        if (!siblings.length) return '';
+        const ordered = [...siblings].sort((a, b) => (a.preco_brl || 0) - (b.preco_brl || 0));
+        const currentHasPrice = car.preco_brl != null;
+        return `<section class="spec-section"><h4>Outras versões deste modelo</h4>
+          <p class="hint" style="margin:-2px 0 12px">O ${car.modelo} é vendido em ${ordered.length + 1} versões. Abaixo, o que muda em relação à ${car.versao || 'versão aberta'}:</p>
+          <div class="siblings">
+            ${ordered
+              .map(
+                (other) => `<article class="sibling">
+                  <div class="sibling__info">
+                    <b>${other.versao || other.versao_pesquisada || ''}</b>
+                    <span>${money(other.preco_brl)} · ${other.autonomia_referencia_km ? `${n0(other.autonomia_referencia_km)} km` : 'autonomia não publicada'} · ${other.bateria_kwh ? `${n1(other.bateria_kwh)} kWh` : 'bateria não publicada'}</span>
+                    <em>${currentHasPrice ? versionDelta(car, other) : ''}</em>
+                  </div>
+                  <div class="sibling__actions">
+                    <button class="ghost-btn" data-detail="${other.id}">Abrir</button>
+                    <button class="pick ${state.selected.includes(other.id) ? 'is-on' : ''}" data-pick="${other.id}">${state.selected.includes(other.id) ? 'Selecionado' : 'Comparar'}</button>
+                  </div>
+                </article>`,
+              )
+              .join('')}
+          </div>
+          ${ordered.length >= 1 ? `<button class="ghost-btn" data-compare-model="${car.id}" style="margin-top:12px">Comparar as ${ordered.length + 1} versões lado a lado</button>` : ''}
+        </section>`;
+      })()}
       ${groups
         .map(
           (g) => `<section class="spec-section"><h4>${g.title}</h4>
@@ -874,6 +945,29 @@ function openDetail(id) {
     btn.addEventListener('click', () => {
       closeSheet();
       setView('cost');
+    });
+  });
+  sheet.querySelectorAll('[data-detail]').forEach((btn) => {
+    btn.addEventListener('click', () => openDetail(btn.dataset.detail));
+  });
+  sheet.querySelectorAll('[data-pick]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      selectCar(btn.dataset.pick);
+      openDetail(car.id);
+    });
+  });
+  sheet.querySelectorAll('[data-compare-model]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const base = state.cars.find((c) => c.id === btn.dataset.compareModel);
+      if (!base) return;
+      const family = state.cars
+        .filter((c) => c.marca === base.marca && c.modelo === base.modelo)
+        .sort((a, b) => (a.preco_brl || 0) - (b.preco_brl || 0))
+        .slice(0, MAX_COMPARE)
+        .map((c) => c.id);
+      state.selected = family;
+      renderDock();
+      openCompare();
     });
   });
 }
@@ -957,6 +1051,8 @@ function openCompare() {
     { label: 'Sua nota', get: (c) => state.scores.get(c.id)?.score, fmt: (v) => `${Math.round(v)}/100`, better: 'high' },
   ];
 
+  const sameModel = new Set(cars.map((c) => `${c.marca} ${c.modelo}`)).size === 1;
+
   const groups = [];
   let current = null;
   for (const row of rows) {
@@ -967,6 +1063,7 @@ function openCompare() {
     }
     const values = cars.map((c) => row.get(c));
     if (values.every((v) => v == null || v === '')) continue;
+    if (sameModel && values.every((v) => JSON.stringify(v) === JSON.stringify(values[0]))) continue;
     current.rows.push({ row, values });
   }
 
@@ -1000,8 +1097,8 @@ function openCompare() {
   const heads = cars
     .map(
       (c) => `<th>
-        <div class="cmp-name">${c.modelo}</div>
-        <div class="cmp-sub">${c.marca} · ${c.versao || ''}</div>
+        <div class="cmp-name">${sameModel ? (c.versao || c.versao_pesquisada || '') : c.modelo}</div>
+        <div class="cmp-sub">${sameModel ? `${c.marca} ${c.modelo}` : `${c.marca} · ${c.versao || ''}`}</div>
         <div class="cmp-price">${money(c.preco_brl)}</div>
         <button class="close-btn" style="width:22px;height:22px;font-size:12px;margin-top:6px"
           data-unpick="${c.id}" aria-label="Remover">×</button>
@@ -1012,7 +1109,7 @@ function openCompare() {
   const html = `
     <div class="sheet__head">
       <div>
-        <p>Lado a lado · o melhor valor de cada linha está marcado</p>
+        <p>${sameModel ? 'Versões do mesmo modelo · mostrando só o que muda' : 'Lado a lado · o melhor valor de cada linha está marcado'}</p>
         <h2>${cars.length} carros comparados</h2>
       </div>
       <button class="close-btn" data-close aria-label="Fechar">×</button>
