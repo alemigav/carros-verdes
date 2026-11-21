@@ -504,7 +504,7 @@ function recompute() {
 function renderCount(cars) {
   const total = state.cars.filter((c) => c.motorizacao === state.mode).length;
   document.getElementById('result-count').textContent =
-    `${cars.length} de ${total} ${state.mode === 'BEV' ? 'carros elétricos' : 'híbridos plug-in'}`;
+    `${cars.length} de ${total} ${state.mode === 'BEV' ? 'carros elétricos' : 'híbridos plug-in flex'}`;
 }
 
 function syncChipClasses() {
@@ -763,7 +763,7 @@ function openDetail(id) {
   const html = `
     <div class="sheet__head">
       <div>
-        <p>${car.marca} · ${BODY_LABELS[car.carroceria] || car.carroceria || ''} ${car.motorizacao === 'PHEV' ? '· híbrido plug-in' : '· elétrico'}</p>
+        <p>${car.marca} · ${BODY_LABELS[car.carroceria] || car.carroceria || ''} ${car.motorizacao === 'PHEV' ? '· híbrido plug-in flex' : '· elétrico'}</p>
         <h2>${car.modelo}</h2>
         <p>${car.versao || car.versao_pesquisada || ''}</p>
       </div>
@@ -792,7 +792,7 @@ function openDetail(id) {
                 <span class="breakdown__weight">${weight}%</span>
               </div>`;
             }).join('')}</div>
-            <p class="hint" style="margin:8px 0 0">Cada barra mostra como este carro se posiciona frente aos outros ${state.mode === 'BEV' ? 'elétricos' : 'plug-in'} nesse critério (0–100). A última coluna é o peso que você deu a ele.</p>
+            <p class="hint" style="margin:8px 0 0">Cada barra mostra como este carro se posiciona frente aos outros ${state.mode === 'BEV' ? 'elétricos' : 'plug-in flex'} nesse critério (0–100). A última coluna é o peso que você deu a ele.</p>
           </section>`
         : ''}
       ${groups
@@ -1038,7 +1038,7 @@ function exportCsv() {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `carros-verdes-${state.mode === 'BEV' ? 'eletricos' : 'plug-in'}-${new Date().toISOString().slice(0, 10)}.csv`;
+  link.download = `carros-verdes-${state.mode === 'BEV' ? 'eletricos' : 'plug-in-flex'}-${new Date().toISOString().slice(0, 10)}.csv`;
   document.body.appendChild(link);
   link.click();
   link.remove();
@@ -1058,7 +1058,7 @@ async function boot() {
   document.getElementById('count-bev').textContent = bev;
   document.getElementById('count-phev').textContent = phev;
   document.getElementById('topbar-meta').textContent =
-    `Preços de ${state.meta.preco_referencia} · ${bev} elétricos + ${phev} plug-in · ${state.cars.length} versões`;
+    `Preços de ${state.meta.preco_referencia} · ${bev} elétricos + ${phev} plug-in flex · ${state.cars.length} versões`;
 
   const priced = state.cars.filter((c) => c.preco_brl);
   const from = priced.length ? Math.min(...priced.map((c) => c.preco_brl)) : null;

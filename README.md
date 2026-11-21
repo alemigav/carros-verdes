@@ -1,6 +1,6 @@
 # Carros Verdes
 
-Comparador de carros elétricos e híbridos plug-in à venda no Brasil: preço de tabela,
+Comparador de carros elétricos e híbridos plug-in flex à venda no Brasil: preço de tabela,
 autonomia Inmetro, recarga, equipamentos e custo real por quilômetro — com a fonte de
 cada número ao lado.
 
@@ -16,7 +16,7 @@ cada número ao lado.
 
 ## O que a interface faz
 
-- **90 versões** no total — 79 elétricos e 11 híbridos plug-in, com preço de 20/11/2026.
+- **90 versões** no total — 79 elétricos e 11 híbridos plug-in flex, com preço de 20/11/2026.
 - **Nota pessoal de 0 a 100**: oito critérios com peso ajustável (custo-benefício,
   autonomia, eficiência, recarga rápida, desempenho, espaço, segurança, conforto).
   Seis presets (Equilibrado, Cidade e economia, Viagens longas, Família, Bem equipado,

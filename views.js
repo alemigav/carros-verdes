@@ -152,7 +152,7 @@ function renderCards(input) {
       const monthly = annualCost(car) == null ? null : annualCost(car) / 12;
       const running = per100 == null
         ? ''
-        : `<div class="card__note" title="Energia (e combustível, nos híbridos plug-in) mais manutenção">Rodar ≈ ${money2(per100)}/100 km · ${money(monthly)}/mês a ${n0(state.cost.kmYear)} km/ano</div>`;
+        : `<div class="card__note" title="Energia (e combustível, nos híbridos plug-in flex) mais manutenção">Rodar ≈ ${money2(per100)}/100 km · ${money(monthly)}/mês a ${n0(state.cost.kmYear)} km/ano</div>`;
 
       return `<article class="card ${selected.has(car.id) ? 'is-selected' : ''}" data-id="${car.id}">
         <div class="card__top">
@@ -170,7 +170,7 @@ function renderCards(input) {
           ${delta}
         </div>
         <div class="card__stats">
-          ${stat(car.motorizacao === 'PHEV' ? 'Autonomia elétrica' : 'Autonomia', car.autonomia_referencia_km, 'km')}
+          ${stat(car.motorizacao === 'PHEV' ? 'Elétrica' : 'Autonomia', car.autonomia_referencia_km, 'km')}
           ${stat('Potência', car.potencia_cv || car.potencia_combinada_cv, 'cv')}
           ${stat('DC', car.recarga_dc_kw, 'kW')}
           ${stat('0–100', car.zero_a_cem_s ? n1(car.zero_a_cem_s) : null, 's')}
@@ -474,7 +474,7 @@ function renderCost(input) {
           <input type="range" id="cost-share" min="0" max="100" step="5" value="${c.homeShare}"></label>
         <label>Gasolina / etanol <b>R$/L</b>
           <input type="number" id="cost-fuel" min="0" max="15" step="0.1" value="${c.fuelPrice}"></label>
-        <label>Plug-in: km no elétrico <b>${c.electricShare}%</b>
+        <label>Plug-in flex: km no elétrico <b>${c.electricShare}%</b>
           <input type="range" id="cost-eshare" min="0" max="100" step="5" value="${c.electricShare}"></label>
         <label>Manutenção e pneus por ano <b>R$</b>
           <input type="number" id="cost-maint" min="0" max="20000" step="100" value="${c.maintenance}"></label>
@@ -516,7 +516,7 @@ function renderCost(input) {
       </div>
       <p class="hint" style="margin-top:10px">
         Somente energia e manutenção. Preço de compra, seguro, depreciação, pedágios e instalação do carregador em casa
-        ficam de fora, e o consumo real de um híbrido plug-in depende de quantas vezes você realmente o pluga —
+        ficam de fora, e o consumo real de um híbrido plug-in flex depende de quantas vezes você realmente o pluga —
         ajuste a fatia elétrica acima para ver os dois extremos.
       </p>
     </div>
