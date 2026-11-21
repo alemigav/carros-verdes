@@ -53,6 +53,10 @@ sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre trad
   <img src="docs/screenshots/08-v3-explicacao.png" width="640" alt="Explicação em linguagem simples">
 </p>
 
+### Quem é dono de quem
+
+![Mapa de grupos e marcas](docs/screenshots/09-marcas.jpg)
+
 ## O que a interface faz
 
 - **90 versões** no total — 79 elétricos e 11 híbridos plug-in flex, com preço de 20/11/2026.
@@ -71,6 +75,12 @@ sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre trad
 - **Ficha completa** por versão, em nove blocos (preço, **custo de rodagem**, bateria,
   recarga, motorização, dimensões, segurança, conforto, garantia), com fontes,
   observações e indicador de confiança dos dados.
+- **Posição, não nota**: cada critério mostra a colocação da versão entre as demais do
+  painel (1º é o melhor), e a linha de segurança lista os equipamentos registrados —
+  6 airbags, sem piloto adaptativo, 5 de 7 assistentes não publicados — em vez de um
+  número que pareça teste de colisão.
+- **Quem é dono de quem** (`/marcas/`): mapa dos grupos e suas marcas, com joint ventures
+  (Denza, Avatr, Leapmotor, CAOA Changan) e atalho para filtrar o comparador por marca.
 - **Preço e custo separados**: "preço ÷ autonomia" mede quanto do valor do carro compra
   cada km de alcance; o gasto real de rodar aparece como R$/km, R$/100 km, R$/mês e
   R$/ano, com as premissas de uso à vista.
@@ -114,6 +124,7 @@ data/features/*.json  pesquisa por carro (aplicada sobre aa_fallback.json)
 data/build_base.py    planilha → cars_base.json
 data/merge.py         base + pesquisa → cars.json
 assets/               marca, ícone social, favicon
+marcas/               mapa de grupos, marcas e joint ventures
 v3/                   protótipo V3: lista simplificada, linguagem simples
 v3/photos/            fotos do Wikimedia Commons (CC) + credits.json
 tools/fetch_photos.py baixa, casa e credita as fotos por modelo

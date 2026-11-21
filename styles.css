@@ -957,11 +957,11 @@ table.cmp .cmp-price { font-family: var(--mono); font-size: 12px; margin-top: 4p
 /* ---------- score breakdown ---------- */
 
 .breakdown { display: grid; gap: 6px; }
-.breakdown__row { display: grid; grid-template-columns: 116px 1fr 26px 34px; align-items: center; gap: 8px; font-size: 11.5px; }
+.breakdown__row { display: grid; grid-template-columns: 122px 1fr 36px 34px; align-items: center; gap: 8px; font-size: 11.5px; }
 .breakdown__label { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .breakdown__track { display: block; height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
 .breakdown__fill { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
-.breakdown__value { font-family: var(--mono); font-size: 10.5px; text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.breakdown__value { font-family: var(--mono); font-size: 11px; text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .breakdown__weight { font-family: var(--mono); font-size: 9.5px; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 @media (max-width: 1400px) {

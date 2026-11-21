@@ -9,7 +9,7 @@ const CRITERIA = [
   { key: 'charging', label: 'Recarga rápida', hint: 'potência DC e tempo de 10–80%' },
   { key: 'performance', label: 'Desempenho', hint: 'relação peso-potência e 0–100 km/h' },
   { key: 'space', label: 'Espaço', hint: 'tamanho, porta-malas e lugares' },
-  { key: 'safety', label: 'Segurança e auxílios', hint: 'airbags e assistentes de direção' },
+  { key: 'safety', label: 'Segurança (equipamentos)', short: 'Segurança', hint: 'airbags e assistentes de direção — não é resultado de teste de colisão' },
   { key: 'comfort', label: 'Conforto e tecnologia', hint: 'telas, bancos, climatização, conectividade' },
 ];
 
@@ -118,8 +118,12 @@ function percentile(cars, getter) {
 
 function shareOf(car, keys) {
   const known = keys.filter((k) => typeof car[k] === 'boolean');
-  if (!known.length) return null;
-  return known.filter((k) => car[k]).length / keys.length;
+  if (known.length < 4 || known.length < keys.length / 2) return null;
+  return known.filter((k) => car[k]).length / known.length;
+}
+
+function knownCount(car, keys) {
+  return keys.filter((k) => typeof car[k] === 'boolean').length;
 }
 
 /* Preço contra a mediana de carros com bateria e potência parecidas. */
@@ -620,6 +624,22 @@ function kv(label, value, unit = '', missingClass = true) {
   </div>`;
 }
 
+function safetyFacts(car) {
+  const labels = {
+    acc: 'piloto adaptativo', aeb: 'freagem automática', lka: 'centralização de faixa',
+    ldw: 'aviso de faixa', bsm: 'ponto cego', rcta: 'tráfego cruzado traseiro', tsr: 'leitura de placas',
+  };
+  const on = ADAS_KEYS.filter((k) => car[k] === true).map((k) => labels[k]);
+  const off = ADAS_KEYS.filter((k) => car[k] === false).map((k) => labels[k]);
+  const unknown = ADAS_KEYS.filter((k) => typeof car[k] !== 'boolean');
+  return [
+    car.airbags ? `${car.airbags} airbags` : 'airbags não publicados',
+    on.length ? `com ${on.slice(0, 3).join(', ')}` : null,
+    off.length ? `sem ${off.slice(0, 2).join(', ')}` : null,
+    `${unknown.length} de ${ADAS_KEYS.length} assistentes não publicados`,
+  ].filter(Boolean).join(' · ');
+}
+
 function boolText(value) {
   if (value === true) return '<span class="yes">Sim</span>';
   if (value === false) return '<span class="no">Não</span>';
@@ -796,19 +816,28 @@ function openDetail(id) {
         </div>
       </div>
       ${s
-        ? `<section class="spec-section"><h4>Como pontua com os seus pesos</h4>
-            <div class="breakdown">${CRITERIA.map((c) => {
-              const value = Math.round((s.parts[c.key] || 0) * 100);
-              const weight = Math.round(((state.weights[c.key] || 0) / (CRITERIA.reduce((sum, x) => sum + (state.weights[x.key] || 0), 0) || 1)) * 100);
-              return `<div class="breakdown__row" title="${c.hint}">
-                <span class="breakdown__label">${c.label}</span>
-                <span class="breakdown__track"><span class="breakdown__fill" style="width:${value}%"></span></span>
-                <span class="breakdown__value">${value}</span>
-                <span class="breakdown__weight">${weight}%</span>
-              </div>`;
-            }).join('')}</div>
-            <p class="hint" style="margin:8px 0 0">Cada barra mostra como este carro se posiciona frente aos outros ${state.mode === 'BEV' ? 'elétricos' : 'plug-in flex'} nesse critério (0–100). A última coluna é o peso que você deu a ele.</p>
-          </section>`
+        ? (() => {
+            const modeCars = state.cars.filter((c) => c.motorizacao === state.mode);
+            const total = modeCars.length;
+            const modeLabel = state.mode === 'BEV' ? 'elétricos' : 'plug-in flex';
+            return `<section class="spec-section"><h4>Posição frente aos outros carros</h4>
+              <p class="hint" style="margin:-2px 0 12px">Cada linha mostra a posição desta versão entre os ${total} ${modeLabel} deste painel naquele critério — 1º é o melhor da lista. É posição relativa, não uma nota de 0 a 100 e não é resultado de teste de colisão.</p>
+              <div class="breakdown">${CRITERIA.map((c) => {
+                const part = s.parts[c.key] || 0;
+                const value = Math.round(part * 100);
+                const rank = Math.max(1, Math.min(total, Math.round((1 - part) * (total - 1)) + 1));
+                const weight = Math.round(((state.weights[c.key] || 0) / (CRITERIA.reduce((sum, x) => sum + (state.weights[x.key] || 0), 0) || 1)) * 100);
+                return `<div class="breakdown__row" title="${c.hint}">
+                  <span class="breakdown__label">${c.short || c.label}</span>
+                  <span class="breakdown__track"><span class="breakdown__fill" style="width:${value}%"></span></span>
+                  <span class="breakdown__value">${rank}º</span>
+                  <span class="breakdown__weight">${weight}%</span>
+                </div>`;
+              }).join('')}</div>
+              <p class="hint" style="margin:10px 0 0">A última coluna é o peso que você deu ao critério. Em segurança, a posição considera <b>quantidade de airbags e presença dos assistentes registrados na base</b>. Não inclui resultado de teste de colisão (como Latin NCAP), que não faz parte dos dados.</p>
+              <p class="notes" style="margin-top:10px"><b>O que a base informa sobre segurança</b>${safetyFacts(car)}</p>
+            </section>`;
+          })()
         : ''}
       ${groups
         .map(
@@ -1150,6 +1179,11 @@ async function boot() {
   });
 
   const params = new URLSearchParams(location.search);
+  const paramsQuery = params.get('q');
+  if (paramsQuery) {
+    state.filters.search = paramsQuery.trim().toLowerCase();
+    document.getElementById('f-search').value = paramsQuery;
+  }
   const paramsMode = params.get('mode');
   const paramsView = params.get('view');
   if (paramsMode === 'PHEV' || paramsMode === 'BEV') setMode(paramsMode);
