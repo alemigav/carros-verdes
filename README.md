@@ -57,6 +57,52 @@ sob demanda). Texto base de 18 px, alvos de toque de 52 px e jargão sempre trad
 
 ![Mapa de grupos e marcas](docs/screenshots/09-marcas.jpg)
 
+## App Android
+
+Além do site, o projeto tem um **app nativo Android** em Kotlin + Jetpack Compose, pensado para quem
+está comprando o primeiro carro eletrificado depois dos 60 anos — sem deixar de dar acesso à ficha
+técnica completa de qualquer carro.
+
+Duas portas, uma base de dados só:
+
+| Porta | Para quem | O que faz |
+| --- | --- | --- |
+| **Me ajude a escolher** | quem quer uma resposta curta | três perguntas, uma por tela, resposta em cartões grandes e leitura em voz alta |
+| **Consultar um carro** | quem já sabe o que quer | busca por marca ou modelo e ficha técnica completa, sem responder pergunta nenhuma |
+| **Híbridos plug-in flex** | quem está aberto a eles | seção separada, com aviso de que esses carros também queimam combustível |
+
+O que muda em relação ao site: a autonomia aparece em quilômetros **com um exemplo de viagem ao
+lado**, o gasto aparece em **reais por mês** comparado ao carro a gasolina, e a recarga é explicada
+pelo trabalho que dá (tomada comum, carregador de parede ou planejar a estrada), nunca em kW.
+
+Regra de interface que vale para todas as telas: texto de corpo de 20 sp, alvo de toque de 64 dp,
+contraste alto, nenhuma rolagem horizontal, nenhum gesto sem botão equivalente e **campo ausente
+sempre vira frase — nunca traço nem zero**.
+
+| Plano e decisões | Como compilar e manter | Publicação |
+| --- | --- | --- |
+| [`docs/PLANO-APP-ANDROID.md`](docs/PLANO-APP-ANDROID.md) | [`android/README.md`](android/README.md) | [`docs/PLAY-STORE.md`](docs/PLAY-STORE.md) |
+
+### Atualizar os dados do app
+
+O app **não contém nenhum fato sobre carro**: tudo vem de `data/cars.json`, o mesmo arquivo do site.
+
+| O que mudou | O que fazer | Quem já tem o app recebe |
+| --- | --- | --- |
+| carro, versão ou preço | rodar o pipeline e commitar `data/cars.json` | ao tocar em "Procurar dados novos" |
+| campo novo na base | acima + uma linha em `domain/CampoCatalogo.kt` | nova versão do app |
+| regra de escolha ou de custo | `Premissas.kt`, `Traducao.kt`, `Ranking.kt` | nova versão do app |
+
+Para empacotar uma base nova junto com o APK, copie o arquivo antes de compilar:
+
+```bash
+cp data/cars.json android/app/src/main/assets/cars.json
+cd android && ./gradlew :app:testDebugUnitTest :app:bundleRelease
+```
+
+Os 24 testes rodam contra o `data/cars.json` real, não contra dados de mentira: se a base mudar de
+forma que quebre o app, o build falha antes de gerar o APK.
+
 ## O que a interface faz
 
 - **92 versões** no total — 81 elétricos e 11 híbridos plug-in flex, com preço de 20/11/2026.
@@ -140,6 +186,11 @@ marcas/               mapa de grupos, marcas e joint ventures
 v3/                   protótipo V3: lista simplificada, linguagem simples
 v3/photos/            fotos do Wikimedia Commons (CC) + credits.json
 tools/fetch_photos.py baixa, casa e credita as fotos por modelo
+android/              app Android nativo (Kotlin + Compose); ver android/README.md
+privacidade/          política de privacidade do app (URL exigida pela Play Store)
+docs/PLANO-APP-ANDROID.md   plano de produto e arquitetura do app
+docs/PLAY-STORE.md    ficha da loja, materiais e passo a passo da publicação
+docs/play/            ícone 512×512 e banner 1024×500
 ```
 
 ## Pipeline de dados

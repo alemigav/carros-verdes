@@ -1,0 +1,251 @@
+{
+ "schema": 1,
+ "licoes": [
+  {
+   "id": "como-ler",
+   "tipo": "Comece por aqui",
+   "titulo": "Como ler este app",
+   "resumo": "O que são os três números do cartão e por que aparece “não publicado”.",
+   "secoes": [
+    {
+     "titulo": "Os três números",
+     "paragrafos": [
+      "Em cada carro você vê três números grandes: quanto custa por mês para rodar, quantos quilômetros anda com uma carga e quantos litros cabem no porta-malas.",
+      "O valor por mês é energia mais manutenção, rodando 15.000 km por ano. Não inclui as parcelas do carro nem o seguro."
+     ]
+    },
+    {
+     "titulo": "Quando falta um dado",
+     "paragrafos": [
+      "Os fabricantes não publicam tudo. Em vez de mostrar um traço ou um zero, o app escreve o que falta: “o fabricante não publica este tempo nesta versão”.",
+      "Isso quer dizer que o dado não foi publicado — não quer dizer que o carro não tem o equipamento. Na dúvida, pergunte na concessionária."
+     ]
+    },
+    {
+     "titulo": "De onde vêm os números",
+     "paragrafos": [
+      "A base é montada com a ficha aberta do Recarregados, as páginas de especificação de cada fabricante e os preços de novembro de 2026.",
+      "Cada ficha técnica lista as fontes daquele carro. Campo sem fonte confiável fica de fora."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Ver todos os carros",
+    "filtro": "todos"
+   }
+  },
+  {
+   "id": "tipos",
+   "tipo": "O básico",
+   "titulo": "Elétrico, híbrido e híbrido plug-in",
+   "resumo": "Três jeitos diferentes de ter um carro eletrificado. Só um deles nunca passa no posto.",
+   "secoes": [
+    {
+     "titulo": "Elétrico puro",
+     "paragrafos": [
+      "Tem só motor elétrico e bateria grande. Não tem tanque de combustível: a única forma de andar é com carga na bateria.",
+      "É o tipo mais simples de manter, porque não tem óleo de motor, velas nem escapamento."
+     ]
+    },
+    {
+     "titulo": "Híbrido plug-in flex",
+     "paragrafos": [
+      "Tem bateria menor, motor elétrico e também motor a combustão. Anda alguns quilômetros só na eletricidade e, quando a bateria acaba, o motor a combustão assume.",
+      "Na base deste app, todos são flex: o motor a combustão roda com etanol ou gasolina. Ou seja, este carro também abastece."
+     ]
+    },
+    {
+     "titulo": "Híbrido comum (não está aqui)",
+     "paragrafos": [
+      "O híbrido comum também tem motor elétrico, mas não se carrega na tomada: a bateria pequena se recarrega com o próprio motor e com as freadas.",
+      "Este app compara carros que se carregam na tomada. O híbrido comum fica de fora."
+     ]
+    },
+    {
+     "titulo": "Qual combina com você",
+     "paragrafos": [
+      "Se você tem onde carregar toda noite e roda mais de 1.000 km por mês, o elétrico puro costuma ser o mais econômico.",
+      "Se viaja muito para lugares sem carregador, o plug-in flex resolve com combustível, mas você continua dependendo do posto."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Ver os híbridos flex",
+    "filtro": "hibrido"
+   }
+  },
+  {
+   "id": "kwh",
+   "tipo": "O básico",
+   "titulo": "O que é kWh e por que esse número importa",
+   "resumo": "Bateria se mede em kWh. Consumo também. E é a divisão entre os dois que dá a autonomia.",
+   "secoes": [
+    {
+     "titulo": "Duas palavras parecidas",
+     "paragrafos": [
+      "kWh é energia: o tamanho do tanque. kW é potência: a velocidade com que a energia entra ou sai.",
+      "Uma bateria de 40 kWh é como um tanque de 40 litros. Um carregador de 7,4 kW é uma torneira mais aberta que uma tomada de 2 kW."
+     ]
+    },
+    {
+     "titulo": "A conta da autonomia",
+     "paragrafos": [
+      "Se o carro gasta 15 kWh para andar 100 km e a bateria tem 45 kWh, a conta é 45 dividido por 15, vezes 100: cerca de 300 km.",
+      "Por isso dois carros com a mesma bateria podem ter autonomias bem diferentes: um gasta mais energia que o outro para andar o mesmo trecho."
+     ]
+    },
+    {
+     "titulo": "O que muda o consumo",
+     "paragrafos": [
+      "Velocidade alta, ar-condicionado, subida, peso e frio aumentam o consumo. Cidade com trânsito e frenagem regenerativa ajudam a gastar menos.",
+      "Na prática, o número do Inmetro é o ponto de partida, não a promessa."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Ver os carros que gastam menos",
+    "filtro": "custo"
+   }
+  },
+  {
+   "id": "autonomia",
+   "tipo": "Na prática",
+   "titulo": "Autonomia: o número do Inmetro e o da vida real",
+   "resumo": "Por que você não vai fazer exatamente os quilômetros da etiqueta — e como planejar sem susto.",
+   "secoes": [
+    {
+     "titulo": "Como o número é medido",
+     "paragrafos": [
+      "O Inmetro mede em um ciclo padronizado, em laboratório, com velocidade e temperatura controladas. Serve para comparar carros entre si.",
+      "A sua rotina não é um ciclo de laboratório: tem subida, ar-condicionado ligado, bagagem e pressa."
+     ]
+    },
+    {
+     "titulo": "Quanto contar na prática",
+     "paragrafos": [
+      "Em viagem de estrada, com ar ligado, costuma sobrar de 70% a 80% do número publicado.",
+      "Na cidade, com trânsito e freadas, é comum chegar mais perto do número da etiqueta."
+     ]
+    },
+    {
+     "titulo": "Planejar a viagem",
+     "paragrafos": [
+      "Antes de pegar a estrada, veja a distância e onde há carregador rápido no caminho. Uma parada de 30 minutos costuma resolver boa parte do trajeto.",
+      "Carro com recarga rápida de 100 kW ou mais encurta essa parada; carro sem recarga rápida publicada pede mais planejamento."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Ver os carros de maior autonomia",
+    "filtro": "autonomia"
+   }
+  },
+  {
+   "id": "carregar-em-casa",
+   "tipo": "Na prática",
+   "titulo": "Como carregar em casa",
+   "resumo": "Tomada comum resolve para muita gente. Carregador de parede é obra — e nem sempre acelera.",
+   "secoes": [
+    {
+     "titulo": "Tomada comum",
+     "paragrafos": [
+      "Numa tomada de 127 V ou 220 V, o carro costuma receber de 1,3 a 2,8 kW. Para encher uma bateria de 40 kWh, conte de 12 a 20 horas.",
+      "Funciona bem para quem roda pouco e deixa o carro a noite inteira na garagem."
+     ]
+    },
+    {
+     "titulo": "Carregador de parede (wallbox)",
+     "paragrafos": [
+      "Potência típica de 7,4 kW: enche a mesma bateria em 5 a 8 horas. Exige circuito dedicado, aterramento e instalação por eletricista.",
+      "O carro precisa aceitar essa potência. Se a ficha diz 3,7 kW de recarga em casa, um wallbox mais forte não vai adiantar."
+     ]
+    },
+    {
+     "titulo": "Segurança",
+     "paragrafos": [
+      "Não use extensão nem benjamim para carregar carro. A corrente é alta e constante por horas.",
+      "Peça ao eletricista para verificar a fiação do circuito e a capacidade do quadro antes de instalar."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Ver carros que carregam em tomada comum",
+    "filtro": "tomada"
+   }
+  },
+  {
+   "id": "custo",
+   "tipo": "Dinheiro",
+   "titulo": "Quanto custa rodar por mês",
+   "resumo": "As premissas da conta, e o que fica de fora dela.",
+   "secoes": [
+    {
+     "titulo": "As premissas",
+     "paragrafos": [
+      "A conta considera 15.000 km por ano, ou 1.250 km por mês. Oitenta por cento da recarga em casa, a R$ 0,95 o kWh, e o resto em posto público, a R$ 1,80 o kWh.",
+      "Entra também manutenção e pneus: R$ 1.800 por ano. E, nos híbridos, a parte rodada com combustível."
+     ]
+    },
+    {
+     "titulo": "A comparação com gasolina",
+     "paragrafos": [
+      "Um carro a gasolina que faz 10 km por litro, com o litro a R$ 6,10, gasta cerca de R$ 762 por mês rodando os mesmos 1.250 km.",
+      "É por isso que a economia mensal aparece em reais: é o número que muda o orçamento da casa."
+     ]
+    },
+    {
+     "titulo": "O que não entra",
+     "paragrafos": [
+      "Seguro, parcelas do financiamento, depreciação, pedágio, estacionamento e a instalação do carregador ficam fora.",
+      "Nos híbridos sem consumo de combustível publicado, a conta mostra só a parte elétrica e avisa que o gasto real é maior."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Ver os carros de menor custo por km",
+    "filtro": "custo"
+   }
+  },
+  {
+   "id": "na-loja",
+   "tipo": "Dinheiro",
+   "titulo": "O que perguntar na concessionária",
+   "resumo": "Sete perguntas que mudam a decisão — e que o vendedor nem sempre oferece.",
+   "secoes": [
+    {
+     "titulo": "Sobre a bateria",
+     "paragrafos": [
+      "Qual é a garantia da bateria, em anos e em quilômetros? Oito anos é o mais comum hoje.",
+      "A garantia cobre perda de capacidade? A partir de quanto por cento?"
+     ]
+    },
+    {
+     "titulo": "Sobre a recarga",
+     "paragrafos": [
+      "O carro vem com carregador portátil? Qual é a potência dele?",
+      "Qual é o tempo de recarga em tomada comum e em carregador de parede? Peça o número, não a palavra “rápido”."
+     ]
+    },
+    {
+     "titulo": "Sobre o uso",
+     "paragrafos": [
+      "Quais assistentes de direção vêm nesta versão: piloto adaptativo, frenagem automática, câmera 360°?",
+      "Quanto custa cada revisão e de quantos em quantos quilômetros?",
+      "A bateria tem bomba de calor? Isso muda o consumo no frio."
+     ]
+    },
+    {
+     "titulo": "Sobre o preço",
+     "paragrafos": [
+      "O preço é de tabela ou de campanha? A campanha vale para esta versão e esta cor?",
+      "Confira o preço na ficha do app antes de ir: ela traz a data de referência dos preços."
+     ]
+    }
+   ],
+   "acao": {
+    "rotulo": "Abrir a lista e escolher um carro",
+    "filtro": "todos"
+   }
+  }
+ ]
+}

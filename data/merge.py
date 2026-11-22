@@ -149,6 +149,7 @@ def main():
     cars.sort(key=lambda c: (c["motorizacao"] != "BEV", c["preco_brl"] or 10**9))
 
     meta = {
+        "schema": 1,
         "gerado_em": date.today().isoformat(),
         "preco_referencia": "20/11/2026",
         "planilha": "comparativo_eletricos_brasil_20-11-2026.xlsx",

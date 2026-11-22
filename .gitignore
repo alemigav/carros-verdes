@@ -3,3 +3,17 @@
 node_modules/
 scheduled_tasks.json
 *.log
+
+# --- Android ---
+android/.jdk/
+android/local.properties
+android/keystore.properties
+android/keystore/
+android/.gradle/
+android/build/
+android/app/build/
+android/.kotlin/
+*.apk
+*.aab
+*.jks
+*.keystore
